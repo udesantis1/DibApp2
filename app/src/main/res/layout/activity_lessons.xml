@@ -8,25 +8,30 @@
     tools:context=".PastClasses">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Lista delle lezioni di (nome corso)"
         android:id="@+id/lessons_title"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
         android:padding="8dp"
-        tools:ignore="MissingConstraints" />
+        android:text="Lista delle lezioni di (nome corso)"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="1dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lessons_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="42dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/lessons_title"
+        app:layout_constraintVertical_bias="0.953" />
 
 
 

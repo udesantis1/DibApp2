@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -40,8 +41,6 @@ public class LessonRecyclerAdapter extends RecyclerView.Adapter<LessonRecyclerAd
         final String lessonId = lessonsList.get(i).LessonID;
         final String courseId = lessonsList.get(i).getCourseID();
 
-
-
         String lessonName = lessonsList.get(i).getLesson_name();
         viewHolder.setLesson_name(lessonName);
 
@@ -54,6 +53,7 @@ public class LessonRecyclerAdapter extends RecyclerView.Adapter<LessonRecyclerAd
                 context.startActivity(intent);
             }
         });
+
 
     }
 

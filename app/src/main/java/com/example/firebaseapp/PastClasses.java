@@ -40,7 +40,7 @@ public class PastClasses extends AppCompatActivity {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         //SnapshotListener help to retrieve data in real time
-        firebaseFirestore.collection("Courses").orderBy("courseName").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        firebaseFirestore.collection("Courses").orderBy("courseName").addSnapshotListener(this, new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
 

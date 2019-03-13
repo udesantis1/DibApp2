@@ -1,5 +1,7 @@
 package com.example.firebaseapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -66,17 +68,27 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         if(view == buttonCreate)
         {
-            Lesson lesson = new Lesson("0DhmWbfJuRVGZ0qj7VRp");
-            firebaseFirestore.collection("Courses/"+"0DhmWbfJuRVGZ0qj7VRp"+"/Lessons").add(lesson).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentReference> task) {
+            
+            new AlertDialog.Builder(getContext())
+                    .setTitle("Create Lesson")
+                    .setMessage("Do you really want to create a new lesson?")
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            Lesson lesson = new Lesson("0DhmWbfJuRVGZ0qj7VRp");
+                            firebaseFirestore.collection("Courses/"+"0DhmWbfJuRVGZ0qj7VRp"+"/Lessons").add(lesson).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentReference> task) {
 
-                    if(task.isSuccessful())
-                    {
-                        Toast.makeText(getContext(), "Lesson added", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+                                    if(task.isSuccessful())
+                                    {
+                                        Toast.makeText(getContext(), "Lesson added", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }})
+                    .setNegativeButton(android.R.string.no, null).show();
+
         }
     }
 }

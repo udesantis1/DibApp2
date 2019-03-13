@@ -63,7 +63,7 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
 
         final String courseId = course_list.get(i).CourseID;
 
-        String course_name = course_list.get(i).getCourseName();
+        final String course_name = course_list.get(i).getCourseName();
         viewHolder.setName(course_name);
 
 
@@ -72,6 +72,7 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
             public void onClick(View view) {
                 Intent intent = new Intent(context, LessonsActivity.class);
                 intent.putExtra("course_id", courseId);
+                intent.putExtra("course_name", course_name);
                 context.startActivity(intent);
             }
         });
