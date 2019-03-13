@@ -13,7 +13,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -47,9 +50,10 @@ public class LessonsActivity extends AppCompatActivity {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         //Sistemare
-        //lessons_title.setText("Lista delle lezioni di " + firebaseFirestore.collection("Courses").document(course_id).get().toString());
 
-        firebaseFirestore.collection("Courses/" + course_id + "/Lessons").addSnapshotListener(LessonsActivity.this, new EventListener<QuerySnapshot>() {
+        //lessons_title.setText();
+
+        firebaseFirestore.collection("Courses/" + course_id + "/Lessons").orderBy("lesson_name").addSnapshotListener(LessonsActivity.this, new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
 

@@ -28,20 +28,22 @@
             android:text="Show schedule" />
 
         <Button
-            android:id="@+id/buttonOldClasses"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:paddingTop="15dp"
-            android:text="Past Lessons" />
+        android:id="@+id/buttonOldClasses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:paddingTop="15dp"
+        android:text="Past Lessons" />
 
         <Button
-            android:id="@+id/buttonLogout"
+            android:id="@+id/buttonCreateLesson"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:paddingTop="15dp"
-            android:text="Logout" />
+            android:text="Create Lesson" />
+
+
 
     </LinearLayout>
 

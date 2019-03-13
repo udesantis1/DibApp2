@@ -9,12 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
-    private Button buttonQR, buttonSchedule, buttonClasses, buttonLogout;
+    private Button buttonQR, buttonSchedule, buttonClasses, buttonCreate;
+    private FirebaseFirestore firebaseFirestore;
 
     @Nullable
     @Override
@@ -24,28 +30,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         buttonQR = (Button) view.findViewById(R.id.buttonScanQR);
         buttonSchedule = (Button) view.findViewById(R.id.buttonSchedule);
         buttonClasses = (Button) view.findViewById(R.id.buttonOldClasses);
-        buttonLogout = (Button) view.findViewById(R.id.buttonLogout);
+        buttonCreate = (Button) view.findViewById(R.id.buttonCreateLesson);
+
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
 
         //adding listener to button
 
         buttonQR.setOnClickListener(this);
         buttonClasses.setOnClickListener(this);
         buttonSchedule.setOnClickListener(this);
-        buttonLogout.setOnClickListener(this);
+        buttonCreate.setOnClickListener(this);
 
         return view;
     }
 
     @Override
     public void onClick(View view) {
-
-        if(view == buttonLogout)
-        {
-            FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(getContext(), Login.class));
-            getActivity().finish();
-
-        }
 
         if(view == buttonQR)
         {
@@ -61,6 +62,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         {
 
             startActivity(new Intent(getContext(), PastClasses.class));
+        }
+
+        if(view == buttonCreate)
+        {
+            Lesson lesson = new Lesson("0DhmWbfJuRVGZ0qj7VRp");
+            firebaseFirestore.collection("Courses/"+"0DhmWbfJuRVGZ0qj7VRp"+"/Lessons").add(lesson).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentReference> task) {
+
+                    if(task.isSuccessful())
+                    {
+                        Toast.makeText(getContext(), "Lesson added", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
     }
 }
