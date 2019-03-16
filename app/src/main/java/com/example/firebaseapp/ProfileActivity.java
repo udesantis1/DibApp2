@@ -55,7 +55,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         //getting current user
         FirebaseUser user = firebaseAuth.getCurrentUser();
-
         //initializing views
         textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
 

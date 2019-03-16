@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import javax.annotation.Nullable;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,7 +40,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     //progress dialog
     private ProgressDialog progressDialog;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +77,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         String password  = editTextPassword.getText().toString().trim();
 
 
+
+
         //checking if email and passwords are empty
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this,"Please enter email",Toast.LENGTH_LONG).show();
@@ -93,11 +103,18 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressDialog.dismiss();
+
+                        //Getting current user
+                        final FirebaseUser user = firebaseAuth.getCurrentUser();
+
                         //if the task is successfull
                         if(task.isSuccessful()){
                             //start the profile activity
                             finish();
                             startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+
+
+
                         }
                         else
                         {

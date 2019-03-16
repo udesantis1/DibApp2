@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,26 +17,85 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private Button buttonQR, buttonSchedule, buttonClasses, buttonCreate;
     private FirebaseFirestore firebaseFirestore;
 
+    //getting user info
+    private FirebaseAuth firebaseAuth;
+
+    //Firestore
+    private FirebaseFirestore mFireStore;
+    private static final String TAG = "Name: ";
+
+    //admin per memorizzare info
+    final AdminUser admin = new AdminUser();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container,false);
+
+        //initializing firebase authentication object
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        //getting current user
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
+
+
+        //saving user info
+        admin.setEmail(user.getEmail());
+        admin.setCourseId(user.getUid());
 
         buttonQR = (Button) view.findViewById(R.id.buttonScanQR);
         buttonSchedule = (Button) view.findViewById(R.id.buttonSchedule);
         buttonClasses = (Button) view.findViewById(R.id.buttonOldClasses);
         buttonCreate = (Button) view.findViewById(R.id.buttonCreateLesson);
 
-        firebaseFirestore = FirebaseFirestore.getInstance();
 
+
+
+        //cercare se l'utente corrente è un admin o no
+        mFireStore = FirebaseFirestore.getInstance();
+
+
+        mFireStore.collection("AdminUsers")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@javax.annotation.Nullable QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                        boolean find = false;
+                        if(e != null){
+                            Log.d(TAG, "error : "+ e.getMessage());
+                        }
+
+                        for(DocumentSnapshot doc : documentSnapshots){
+                            String email = doc.getString("email");
+
+
+                            if(email.equals(admin.getEmail())) {
+                                find = true;
+                                break;
+                            }
+                            else{
+                                find = false;
+                            }
+                        }
+                        if (find){
+                            buttonCreate.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
+
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         //adding listener to button
 
@@ -43,6 +103,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         buttonClasses.setOnClickListener(this);
         buttonSchedule.setOnClickListener(this);
         buttonCreate.setOnClickListener(this);
+        buttonCreate.setVisibility(View.GONE);
 
         return view;
     }
@@ -68,7 +129,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         if(view == buttonCreate)
         {
-            
             new AlertDialog.Builder(getContext())
                     .setTitle("Create Lesson")
                     .setMessage("Do you really want to create a new lesson?")
@@ -79,7 +139,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                             firebaseFirestore.collection("Courses/"+"0DhmWbfJuRVGZ0qj7VRp"+"/Lessons").add(lesson).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentReference> task) {
-
                                     if(task.isSuccessful())
                                     {
                                         Toast.makeText(getContext(), "Lesson added", Toast.LENGTH_SHORT).show();
@@ -88,7 +147,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                             });
                         }})
                     .setNegativeButton(android.R.string.no, null).show();
-
         }
     }
 }

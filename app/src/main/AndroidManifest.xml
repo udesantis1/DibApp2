@@ -43,7 +43,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ProfileActivity" />
         </activity>
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ProfileActivity"/>
         <activity android:name=".Login" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -30,11 +30,13 @@ import google.zxing.integration.android.IntentResult;
 
 public class PostQR extends AppCompatActivity implements View.OnClickListener{
 
-    Context context;
+
     private Button scanBtn;
     private TextView formatTxt, contentTxt;
     private List<Course> course_list;
     private CourseRecyclerAdapter courseRecyclerAdapter;
+    public Context contextQR;
+    public static Bundle bundleQR;
 
     //Firestore
     private static final String TAG = "Name: ";
@@ -56,6 +58,14 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
 
     }
 
+    public Bundle getBundle(String lesson, String course){
+
+        bundleQR.putString("LessonID", lesson);
+        bundleQR.putString("CourseID", course);
+        return bundleQR;
+    }
+
+
     public void onClick(View v){
         if(v.getId()==R.id.scan_button){
             IntentIntegrator scanIntegrator = new IntentIntegrator(this);
@@ -67,12 +77,16 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanningResult != null) {
             final String scanContent = scanningResult.getContents();
+            final String lesson = scanContent.substring(0,20);
+            final String course = scanContent.substring(20,40);
             final String scanFormat = scanningResult.getFormatName();
+
+
 
 
             //Firestore
             mFireStore = FirebaseFirestore.getInstance();
-            mFireStore.collection("Courses").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            mFireStore.collection("Courses/"+course+"/Lessons").addSnapshotListener(new EventListener<QuerySnapshot>() {
                 @Override
                 public void onEvent(@Nullable QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
 
@@ -83,26 +97,41 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
                     boolean isSubject = false;
 
                     for(DocumentSnapshot doc : documentSnapshots){
-                        String username = doc.getString("courseName");
+                        String lessonID = doc.getId();
 
 
-                        if(username.equals(scanContent)) {
-                            contentTxt.setText("Stai seguendo " + username);
+                        if(lessonID.equals(lesson)) {
+
                             isSubject = true;
                             break;
                         }
-                        else contentTxt.setText("Name not found " + username);
+
                     }
                     if(isSubject){
 
-                        //Qui va messo il codice per dare la possibilità di commentare e valutare
+                        //contentTxt.setText("Stai seguendo Mobile" );
+                        //Bundle bundle = new Bundle();
+                        //bundle.putString("CourseID", course);
+                        //bundle.putString("LessonID", lesson);
+                        //getBundle(lesson, course);
+                        Intent intentQR = new Intent(getApplicationContext(),CommentsActivity.class);
+                        intentQR.putExtra("CourseID", course);
+                        intentQR.putExtra("LessonID", lesson);
 
-                    }
+                       startActivity(intentQR);
+                        //intent.putExtras(bundle);
+
+                    }else contentTxt.setText("Name not found: Lesson: " + lesson + " Course: " +course);
                 }
             });
 
 
 
+           /* if(!(bundleQR.isEmpty())){
+                intent = new Intent(getApplicationContext(), CommentsActivity.class);
+                intent.putExtras(bundleQR);
+
+            }*/
 
 
 

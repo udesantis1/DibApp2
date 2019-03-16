@@ -40,8 +40,13 @@ public class CommentsActivity extends AppCompatActivity {
     private CommentRecyclerAdapter commentRecyclerAdapter;
 
     private FirebaseFirestore firebaseFirestore;
+    private FirebaseFirestore firebaseFirestore2;
     private String lesson_id;
     private String course_id;
+
+    //For QR Variables
+    private String lessonQR;
+    private String courseQR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +55,21 @@ public class CommentsActivity extends AppCompatActivity {
 
         //Initializing the firestore instance
         firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseFirestore2 = FirebaseFirestore.getInstance();
+
 
         //retrieving the ID from the lesson and course linked to these comments
         lesson_id = getIntent().getStringExtra("lesson_id");
         course_id = getIntent().getStringExtra("course_id");
+
+
+        //retrieving info from QRCode
+        lessonQR = getIntent().getStringExtra("LessonID");
+        courseQR = getIntent().getStringExtra("CourseID");
+
+        String path = "Courses/" + course_id + "/Lessons/" + lesson_id + "/Comments";
+
+
 
         comment_field = findViewById(R.id.comment_field);
         comment_send_btn = findViewById(R.id.comment_send_btn);
@@ -67,55 +83,60 @@ public class CommentsActivity extends AppCompatActivity {
         comment_list.setLayoutManager(new LinearLayoutManager(this));
         comment_list.setAdapter(commentRecyclerAdapter);
 
-        //retrieving all comments linked to the lesson
-        firebaseFirestore.collection("Courses/"+course_id+"/Lessons/"+lesson_id+"/Comments").orderBy("timestamp").addSnapshotListener(CommentsActivity.this, new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
 
-                if(queryDocumentSnapshots.isEmpty())
-                {
-                    commentsList.clear();
-                    Toast.makeText(CommentsActivity.this, "No comments for this lesson", Toast.LENGTH_LONG).show();
-                }
+        if(lessonQR != null && courseQR != null){
+            path = "Courses/" + courseQR + "/Lessons/" + lessonQR + "/Comments";
+        }
 
-                for(DocumentChange doc: queryDocumentSnapshots.getDocumentChanges())
-                {
-                    if(doc.getType() == DocumentChange.Type.ADDED)
-                    {
-                        String commentId = doc.getDocument().getId(); //useless?
-                        Comment comments = doc.getDocument().toObject(Comment.class); // useless?
-                        commentsList.add(comments);
-                        commentRecyclerAdapter.notifyDataSetChanged();  //real time changes
+            //retrieving all comments linked to the lesson
+            firebaseFirestore.collection(path).orderBy("timestamp").addSnapshotListener(CommentsActivity.this, new EventListener<QuerySnapshot>() {
+                @Override
+                public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+
+                    if (queryDocumentSnapshots.isEmpty()) {
+                        commentsList.clear();
+                        Toast.makeText(CommentsActivity.this, "No comments for this lesson", Toast.LENGTH_LONG).show();
                     }
-                }
-            }
-        });
 
-
-        comment_send_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String comment_message = comment_field.getText().toString();
-
-                Map<String, Object> commentsMap = new HashMap<>();
-                commentsMap.put("message", comment_message);
-                commentsMap.put("timestamp", FieldValue.serverTimestamp());
-
-                firebaseFirestore.collection("Courses/"+course_id+"/Lessons/"+lesson_id+"/Comments").add(commentsMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                        if(!task.isSuccessful())
-                        {
-                            Toast.makeText(CommentsActivity.this, "Error posting comment", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-                            comment_field.setText("");
+                    for (DocumentChange doc : queryDocumentSnapshots.getDocumentChanges()) {
+                        if (doc.getType() == DocumentChange.Type.ADDED) {
+                            String commentId = doc.getDocument().getId(); //useless?
+                            Comment comments = doc.getDocument().toObject(Comment.class); // useless?
+                            commentsList.add(comments);
+                            commentRecyclerAdapter.notifyDataSetChanged();  //real time changes
                         }
                     }
-                });
-            }
-        });
+                }
+            });
+
+            comment_send_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    String path = "Courses/" + course_id + "/Lessons/" + lesson_id + "/Comments";
+                    if(lessonQR != null && courseQR != null){
+                        path = "Courses/" + courseQR + "/Lessons/" + lessonQR + "/Comments";
+                    }
+
+                    String comment_message = comment_field.getText().toString();
+
+                    Map<String, Object> commentsMap = new HashMap<>();
+                    commentsMap.put("message", comment_message);
+                    commentsMap.put("timestamp", FieldValue.serverTimestamp());
+
+                    firebaseFirestore.collection(path).add(commentsMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(CommentsActivity.this, "Error posting comment", Toast.LENGTH_SHORT).show();
+                            } else {
+                                comment_field.setText("");
+                            }
+                        }
+                    });
+                }
+
+            });
+
     }
 }
