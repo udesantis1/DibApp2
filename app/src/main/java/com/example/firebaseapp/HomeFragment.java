@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         //saving user info
         admin.setEmail(user.getEmail());
-        admin.setCourseId(user.getUid());
+        //admin.setCourseId(user.getUid());
 
         buttonQR = (Button) view.findViewById(R.id.buttonScanQR);
         buttonSchedule = (Button) view.findViewById(R.id.buttonSchedule);
@@ -81,8 +81,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                             String email = doc.getString("email");
 
 
+
                             if(email.equals(admin.getEmail())) {
                                 find = true;
+                                //getting admin's courseID
+                                admin.setCourseId(doc.getString("courseId"));
                                 break;
                             }
                             else{
@@ -108,6 +111,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+
+
     @Override
     public void onClick(View view) {
 
@@ -129,14 +134,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         if(view == buttonCreate)
         {
+
             new AlertDialog.Builder(getContext())
                     .setTitle("Create Lesson")
                     .setMessage("Do you really want to create a new lesson?")
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            Lesson lesson = new Lesson("0DhmWbfJuRVGZ0qj7VRp");
-                            firebaseFirestore.collection("Courses/"+"0DhmWbfJuRVGZ0qj7VRp"+"/Lessons").add(lesson).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                            Lesson lesson = new Lesson(admin.getCourseId());
+                            firebaseFirestore.collection("Courses/"+lesson.getCourseID()+"/Lessons").add(lesson).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentReference> task) {
                                     if(task.isSuccessful())
