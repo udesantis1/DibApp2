@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class CommentRecyclerAdapter extends RecyclerView.Adapter<CommentRecyclerAdapter.ViewHolder>{
@@ -35,6 +37,16 @@ public class CommentRecyclerAdapter extends RecyclerView.Adapter<CommentRecycler
         String commentMessage = commentsList.get(i).getMessage();
         viewHolder.setComment_message(commentMessage);
 
+        try {
+            java.text.DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            String dateString = df.format(commentsList.get(i).getTimestamp().getTime());
+            viewHolder.setComment_time(dateString);
+        } catch (Exception e) {
+
+            Toast.makeText(context, "Exception : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        }
+
     }
 
     @Override
@@ -54,6 +66,7 @@ public class CommentRecyclerAdapter extends RecyclerView.Adapter<CommentRecycler
 
         private View mView;
         private TextView comment_message;
+        private TextView comment_time;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -64,6 +77,12 @@ public class CommentRecyclerAdapter extends RecyclerView.Adapter<CommentRecycler
         {
             comment_message = mView.findViewById(R.id.comment_message);
             comment_message.setText(message);
+        }
+
+        public void setComment_time(String date)
+        {
+            comment_time = mView.findViewById(R.id.comment_time);
+            comment_time.setText(date);
         }
     }
 }

@@ -23,6 +23,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -118,11 +120,12 @@ public class CommentsActivity extends AppCompatActivity {
                         path = "Courses/" + courseQR + "/Lessons/" + lessonQR + "/Comments";
                     }
 
+                    Date currentTime = Calendar.getInstance().getTime();
                     String comment_message = comment_field.getText().toString();
 
                     Map<String, Object> commentsMap = new HashMap<>();
                     commentsMap.put("message", comment_message);
-                    commentsMap.put("timestamp", FieldValue.serverTimestamp());
+                    commentsMap.put("timestamp", currentTime);
 
                     firebaseFirestore.collection(path).add(commentsMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                         @Override
