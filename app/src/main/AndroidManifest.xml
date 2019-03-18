@@ -16,6 +16,8 @@
         <activity
             android:name=".CommentsActivity"></activity>
         <activity
+            android:name=".RatingActivity"></activity>
+        <activity
             android:name=".LessonsActivity"
             android:parentActivityName=".PastClasses">
             <meta-data

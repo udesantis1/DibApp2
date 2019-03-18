@@ -1,5 +1,6 @@
 package com.example.firebaseapp;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,6 +46,7 @@ public class CommentsActivity extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore2;
     private String lesson_id;
     private String course_id;
+    private Button rateButton;
 
     //For QR Variables
     private String lessonQR;
@@ -76,6 +78,7 @@ public class CommentsActivity extends AppCompatActivity {
         comment_field = findViewById(R.id.comment_field);
         comment_send_btn = findViewById(R.id.comment_send_btn);
         comment_list = findViewById(R.id.comment_list);
+        rateButton=findViewById(R.id.buttonRate);
 
         commentsList = new ArrayList<>();
 
@@ -111,6 +114,7 @@ public class CommentsActivity extends AppCompatActivity {
                 }
             });
 
+
             comment_send_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -141,5 +145,18 @@ public class CommentsActivity extends AppCompatActivity {
 
             });
 
+        rateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity();
+            }
+        });
+
+    }
+    public void openActivity(){
+        Intent intentRating= new Intent(getApplicationContext(),RatingActivity.class);
+       intentRating.putExtra("CourseID",  course_id);
+       intentRating.putExtra("LessonID", lesson_id);
+        startActivity(intentRating);
     }
 }
