@@ -2,6 +2,8 @@ package com.example.firebaseapp;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,10 +29,16 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import static android.content.Context.CLIPBOARD_SERVICE;
+
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
-    private Button buttonQR, buttonSchedule, buttonClasses, buttonCreate;
+    private Button buttonQR, buttonSchedule, buttonClasses, buttonCreate, buttonCopy;
     private FirebaseFirestore firebaseFirestore;
+    private TextView qrID_txt;
+
+    ClipboardManager clipboardManager;
+    ClipData clipData;
 
     //getting user info
     private FirebaseAuth firebaseAuth;
@@ -61,6 +70,20 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         buttonSchedule = (Button) view.findViewById(R.id.buttonSchedule);
         buttonClasses = (Button) view.findViewById(R.id.buttonOldClasses);
         buttonCreate = (Button) view.findViewById(R.id.buttonCreateLesson);
+        qrID_txt = (TextView) view.findViewById(R.id.QRID_txt);
+        buttonCopy = (Button) view.findViewById(R.id.btn_copy);
+
+        //Link per il QR
+        clipboardManager = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE);
+        buttonCopy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String qr = qrID_txt.getText().toString();
+                clipData = ClipData.newPlainText("QR", qr);
+                clipboardManager.setPrimaryClip(clipData);
+                Toast.makeText(getContext(), "Text copied!",Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 
@@ -108,6 +131,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         buttonSchedule.setOnClickListener(this);
         buttonCreate.setOnClickListener(this);
         buttonCreate.setVisibility(View.GONE);
+        qrID_txt.setVisibility(View.GONE);
+        buttonCopy.setVisibility(View.GONE);
 
         return view;
     }
@@ -142,13 +167,48 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            Lesson lesson = new Lesson(admin.getCourseId());
+                            final Lesson lesson = new Lesson(admin.getCourseId());
                             firebaseFirestore.collection("Courses/"+lesson.getCourseID()+"/Lessons").add(lesson).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentReference> task) {
                                     if(task.isSuccessful())
                                     {
                                         Toast.makeText(getContext(), "Lesson added", Toast.LENGTH_SHORT).show();
+
+                                        //Firestore per ottenere id corso e lezione per il qr
+                                        mFireStore = FirebaseFirestore.getInstance();
+                                        mFireStore.collection("Courses/"+lesson.getCourseID()+"/Lessons").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onEvent(@javax.annotation.Nullable QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+
+                                                if(e != null){
+                                                    Log.d(TAG, "error : "+ e.getMessage());
+                                                }
+
+                                                String lessonId = null;
+                                                boolean isSubject = false;
+
+                                                for(DocumentSnapshot doc : documentSnapshots){
+                                                    String lessonName = doc.getString("lesson_name");
+                                                    lessonId = doc.getId();
+
+
+                                                    if(lessonName.equals(lesson.getLesson_name())) {
+
+                                                        isSubject = true;
+                                                        break;
+                                                    }
+
+                                                }
+                                                if(isSubject){
+
+                                                    qrID_txt.setText(lessonId + lesson.getCourseID());
+                                                    qrID_txt.setVisibility(View.VISIBLE);
+                                                    buttonCopy.setVisibility(View.VISIBLE);
+                                                }
+                                            }
+                                        });
+
                                     }
                                 }
                             });

@@ -86,18 +86,18 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
 
             //Firestore
             mFireStore = FirebaseFirestore.getInstance();
-            mFireStore.collection("Courses/"+course+"/Lessons").addSnapshotListener(new EventListener<QuerySnapshot>() {
-                @Override
-                public void onEvent(@Nullable QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                                   mFireStore.collection("Courses/"+course+"/Lessons").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                            @Override
+                            public void onEvent(@Nullable QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
 
-                    if(e != null){
-                        Log.d(TAG, "error : "+ e.getMessage());
-                    }
+                                if(e != null){
+                                    Log.d(TAG, "error : "+ e.getMessage());
+                                }
 
-                    boolean isSubject = false;
+                                boolean isSubject = false;
 
-                    for(DocumentSnapshot doc : documentSnapshots){
-                        String lessonID = doc.getId();
+                                for(DocumentSnapshot doc : documentSnapshots){
+                                    String lessonID = doc.getId();
 
 
                         if(lessonID.equals(lesson)) {
@@ -124,18 +124,6 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
                     }else contentTxt.setText("Name not found: Lesson: " + lesson + " Course: " +course);
                 }
             });
-
-
-
-           /* if(!(bundleQR.isEmpty())){
-                intent = new Intent(getApplicationContext(), CommentsActivity.class);
-                intent.putExtras(bundleQR);
-
-            }*/
-
-
-
-
         }
         else{
             Toast toast = Toast.makeText(getApplicationContext(),
