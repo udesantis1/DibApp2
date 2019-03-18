@@ -19,10 +19,21 @@
             android:id="@+id/lesson_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lesson name"
-            android:textSize="20dp"
             android:padding="10dp"
-            android:textColor="@android:color/black" />
+            android:text="Lesson name"
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/image_delete"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="14dp"
+            android:layout_marginRight="14dp"
+            android:src="@drawable/ic_delete" />
 
 
     </RelativeLayout>

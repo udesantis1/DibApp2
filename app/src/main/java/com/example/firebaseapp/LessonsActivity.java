@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +38,7 @@ public class LessonsActivity extends AppCompatActivity {
     private LessonRecyclerAdapter lessonRecyclerAdapter;
 
 
+
     private FirebaseFirestore firebaseFirestore;
 
 
@@ -50,6 +53,7 @@ public class LessonsActivity extends AppCompatActivity {
         course_name = getIntent().getStringExtra("course_name");
         lessons_list_view = findViewById(R.id.lessons_list_view);
         lessons_title = findViewById(R.id.lessons_title);
+
 
         lessonRecyclerAdapter = new LessonRecyclerAdapter(lesson_list);
         lessons_list_view.setLayoutManager(new LinearLayoutManager(this));
@@ -85,6 +89,5 @@ public class LessonsActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }
