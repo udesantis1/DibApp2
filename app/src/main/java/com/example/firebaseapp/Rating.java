@@ -5,8 +5,8 @@ import java.util.Date;
 public class Rating {
 
     private int  valuee; //value rating
-    private String ratingID;
-    private Date timestamp;
+
+
 
     public Rating(){
 
@@ -17,15 +17,11 @@ public class Rating {
 
     }
 
-    public String getRatingID() {
-        return ratingID;
-    }
+
 
     public int  getValuee() {
         return valuee;
     }
 
-    public void setValuee(int valuee) {
-        this.valuee = valuee;
-    }
+
 }

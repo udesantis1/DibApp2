@@ -155,8 +155,8 @@ public class CommentsActivity extends AppCompatActivity {
     }
     public void openActivity(){
         Intent intentRating= new Intent(getApplicationContext(),RatingActivity.class);
-       intentRating.putExtra("CourseID",  course_id);
-       intentRating.putExtra("LessonID", lesson_id);
+       intentRating.putExtra("CourseID",  courseQR);
+       intentRating.putExtra("LessonID", lessonQR);
         startActivity(intentRating);
     }
 }

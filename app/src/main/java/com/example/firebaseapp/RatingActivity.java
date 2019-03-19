@@ -44,14 +44,13 @@ public class RatingActivity extends AppCompatActivity {
     TextView ratingDisplayTextView; // View number rate
     //Firestore
     FirebaseFirestore mFirestore;
-    //Recycler
+
     private String lesson_id="";
     private String course_id="";
-    private RecyclerView comment_list;
-    private List<Rating> commentsList;
-    private RatingRecyclerAdapter ratingRecyclerAdapter;
-    private EditText comment_field;
-    ArrayList <Integer> valori=new ArrayList<>();
+    private List<Rating> ratingList;
+
+
+
 
 
     @Override
@@ -63,100 +62,46 @@ public class RatingActivity extends AppCompatActivity {
         mFirestore=FirebaseFirestore.getInstance();
         //Inizializing item
         ratingBar=(RatingBar) findViewById(R.id.ratingBar);
-
         btnSubmit= (Button)findViewById(R.id.btn_send);
         ratingDisplayTextView= (TextView)findViewById(R.id.textView);
         //retrieving id from the lesson and course linked to these rate
-        lesson_id = getIntent().getStringExtra("lesson_id");
-        course_id = getIntent().getStringExtra("course_id");
+        lesson_id = getIntent().getStringExtra("lessonID");
+        course_id = getIntent().getStringExtra("courseID");
+        ratingList = new ArrayList<>();
 
+       final String path = "Courses/" + course_id + "/Lessons/" + lesson_id + "/Rates";
+       int i=0;
+       if(i!=1) {
+           btnSubmit.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
 
-        comment_list = findViewById(R.id.comment_list);
-        commentsList = new ArrayList<>();
+                   int b = (int) ratingBar.getRating();
+                   Map<String, Object> ratin = new HashMap<>();
+                   ratin.put("Rating", b);
+                   mFirestore.collection("Courses/" + course_id + "/Lessons/" + lesson_id + "/Rates").add(ratin).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                       @Override
+                       public void onComplete(@NonNull Task<DocumentReference> task) {
+                           if (!task.isSuccessful()) {
+                               Toast.makeText(RatingActivity.this, "Error posting rate", Toast.LENGTH_SHORT).show();
+                           } else {
+                               ratingBar.setRating(0);
+                           }
+                       }
+                   });
 
-        //Recycler setup
-        ratingRecyclerAdapter = new RatingRecyclerAdapter(commentsList);
-        comment_list.setHasFixedSize(true);
-        comment_list.setLayoutManager(new LinearLayoutManager(this));
-        comment_list.setAdapter(ratingRecyclerAdapter);
+                   btnSubmit.setEnabled(false);
+                   Toast.makeText(RatingActivity.this, "Thanks for rate", Toast.LENGTH_SHORT).show();
+                   ratingDisplayTextView.setText("Your rating is:" + ratingBar.getRating());
 
-        final String path = "Courses/" + course_id + "/Lessons/" + lesson_id + "/Rates";
+               }
+           });
+                i++;
+       }else{
+           btnSubmit.setEnabled(false);
 
-        //retrieving all rates linked to the lesson
-        mFirestore.collection(path).orderBy("timestamp").addSnapshotListener(RatingActivity.this, new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+       }
 
-                if(queryDocumentSnapshots.isEmpty())
-                {
-                    commentsList.clear();
-                    Toast.makeText(RatingActivity.this, "No rating for this lesson", Toast.LENGTH_LONG).show();
-                }
-                for(DocumentChange doc: queryDocumentSnapshots.getDocumentChanges())
-                {
-                    if(doc.getType() == DocumentChange.Type.ADDED)
-                    {
-                        String commentId = doc.getDocument().getId(); //useless?
-                        Rating ratings = doc.getDocument().toObject(Rating.class); // useless?
-                        commentsList.add(ratings);
-                        ratingRecyclerAdapter.notifyDataSetChanged();  //real time changes
-                    }
-                }
-            }
-        });
-
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                int b = (int) ratingBar.getRating();
-
-                Map<String, Object> ratin = new HashMap<>();
-                ratin.put("Rating", b);
-                ratin.put("timestamp", FieldValue.serverTimestamp());
-
-                /* mFirestore.collection("Commenti").add(ratin).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                     @Override
-                     public void onSuccess(DocumentReference documentReference) {
-                         Toast.makeText(MainActivity.this,"Ratin add",Toast.LENGTH_SHORT).show();
-                     }
-                 });
-                        */
-
-
-                mFirestore.collection(path).add(ratin).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(RatingActivity.this, "Error posting rate", Toast.LENGTH_SHORT).show();
-                        } else {
-                            ratingBar.setRating(0);
-                        }
-                    }
-                });
-
-                mFirestore.collection(path).get()
-                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                            @Override
-                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                if (!queryDocumentSnapshots.isEmpty()) {
-                                    List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                                    for (DocumentSnapshot d : list) {
-                                        Rating p = d.toObject(Rating.class);
-                                        commentsList.add(p);
-                                    }
-                                    ratingRecyclerAdapter.notifyDataSetChanged();
-                                }
-                            }
-                        });
-                btnSubmit.setEnabled(false);
-
-                Toast.makeText(RatingActivity.this, "Thanks for rate", Toast.LENGTH_SHORT).show();
-                ratingDisplayTextView.setText("Your rating is:" + ratingBar.getRating());
-
-            }
-        });
 
 
     }
