@@ -29,6 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,8 +46,8 @@ public class RatingActivity extends AppCompatActivity {
     //Firestore
     FirebaseFirestore mFirestore;
 
-    private String lesson_id="";
-    private String course_id="";
+    private String lesson_id;
+    private String course_id;
     private List<Rating> ratingList;
 
 
@@ -64,14 +65,15 @@ public class RatingActivity extends AppCompatActivity {
         ratingBar=(RatingBar) findViewById(R.id.ratingBar);
         btnSubmit= (Button)findViewById(R.id.btn_send);
         ratingDisplayTextView= (TextView)findViewById(R.id.textView);
-        //retrieving id from the lesson and course linked to these rate
-        lesson_id = getIntent().getStringExtra("lessonID");
-        course_id = getIntent().getStringExtra("courseID");
+
+        //retrieving id from comment linked to these rate
+        lesson_id = getIntent().getStringExtra("lesson_id");
+        course_id = getIntent().getStringExtra("course_id");
         ratingList = new ArrayList<>();
 
        final String path = "Courses/" + course_id + "/Lessons/" + lesson_id + "/Rates";
-       int i=0;
-       if(i!=1) {
+
+                
            btnSubmit.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
@@ -96,11 +98,8 @@ public class RatingActivity extends AppCompatActivity {
 
                }
            });
-                i++;
-       }else{
-           btnSubmit.setEnabled(false);
 
-       }
+
 
 
 
