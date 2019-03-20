@@ -8,9 +8,21 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="150dp"
+
         android:orientation="vertical"
         android:layout_alignParentLeft="true">
+
+
+        <TextView
+            android:id="@+id/textViewUserEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
             android:id="@+id/buttonScanQR"
@@ -20,22 +32,6 @@
             android:baselineAligned="false"
             android:paddingTop="15dp"
             android:text="Start Lesson" />
-
-        <Button
-            android:id="@+id/buttonSchedule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:paddingTop="15dp"
-            android:text="Show schedule" />
-
-        <Button
-            android:id="@+id/buttonOldClasses"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:paddingTop="15dp"
-            android:text="Past Lessons" />
 
         <Button
             android:id="@+id/buttonCreateLesson"

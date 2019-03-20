@@ -33,9 +33,13 @@ import static android.content.Context.CLIPBOARD_SERVICE;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
-    private Button buttonQR, buttonSchedule, buttonClasses, buttonCreate, buttonCopy;
+    private Button buttonQR, buttonCreate, buttonCopy;
     private FirebaseFirestore firebaseFirestore;
     private TextView qrID_txt;
+    //view objects
+    private TextView textViewUserEmail;
+
+
 
     ClipboardManager clipboardManager;
     ClipData clipData;
@@ -61,14 +65,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //getting current user
         final FirebaseUser user = firebaseAuth.getCurrentUser();
 
+        //initializing views
+        textViewUserEmail = (TextView) view.findViewById(R.id.textViewUserEmail);
+
+        //displaying logged in user name
+        textViewUserEmail.setText("Welcome "+user.getEmail());
+
 
         //saving user info
         admin.setEmail(user.getEmail());
         //admin.setCourseId(user.getUid());
 
         buttonQR = (Button) view.findViewById(R.id.buttonScanQR);
-        buttonSchedule = (Button) view.findViewById(R.id.buttonSchedule);
-        buttonClasses = (Button) view.findViewById(R.id.buttonOldClasses);
+
         buttonCreate = (Button) view.findViewById(R.id.buttonCreateLesson);
         qrID_txt = (TextView) view.findViewById(R.id.QRID_txt);
         buttonCopy = (Button) view.findViewById(R.id.btn_copy);
@@ -127,9 +136,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //adding listener to button
 
         buttonQR.setOnClickListener(this);
-        buttonClasses.setOnClickListener(this);
-        buttonSchedule.setOnClickListener(this);
         buttonCreate.setOnClickListener(this);
+
         buttonCreate.setVisibility(View.GONE);
         qrID_txt.setVisibility(View.GONE);
         buttonCopy.setVisibility(View.GONE);
@@ -146,16 +154,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         {
 
             startActivity(new Intent(getContext(), PostQR.class));
-        }
-        if(view == buttonSchedule)
-        {
-
-            startActivity(new Intent(getContext(), Schedule.class));
-        }
-        if(view == buttonClasses)
-        {
-
-            startActivity(new Intent(getContext(), PastClasses.class));
         }
 
         if(view == buttonCreate)

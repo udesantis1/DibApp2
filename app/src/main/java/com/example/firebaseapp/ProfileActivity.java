@@ -23,8 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
     //firebase auth object
     private FirebaseAuth firebaseAuth;
 
-    //view objects
-    private TextView textViewUserEmail;
+
 
 
 
@@ -55,11 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         //getting current user
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        //initializing views
-        textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
 
-        //displaying logged in user name
-        textViewUserEmail.setText("Welcome "+user.getEmail());
 
 
     }

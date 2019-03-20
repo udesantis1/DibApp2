@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -37,6 +39,8 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
     private CourseRecyclerAdapter courseRecyclerAdapter;
     public Context contextQR;
     public static Bundle bundleQR;
+    private FirebaseAuth firebaseAuth;
+    private String userMail;
 
     //Firestore
     private static final String TAG = "Name: ";
@@ -53,7 +57,9 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
 
         scanBtn.setOnClickListener(this);
 
-
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        userMail = user.getEmail();
 
 
     }
@@ -117,6 +123,7 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
                         Intent intentQR = new Intent(getApplicationContext(),CommentsActivity.class);
                         intentQR.putExtra("CourseID", course);
                         intentQR.putExtra("LessonID", lesson);
+                        intentQR.putExtra("Email", userMail);
 
                        startActivity(intentQR);
                         //intent.putExtras(bundle);

@@ -41,6 +41,7 @@ public class CommentsActivity extends AppCompatActivity {
     private RecyclerView comment_list;
     private List<Comment> commentsList;
     private CommentRecyclerAdapter commentRecyclerAdapter;
+    private String userMail = null;
 
     private FirebaseFirestore firebaseFirestore;
     private FirebaseFirestore firebaseFirestore2;
@@ -70,6 +71,8 @@ public class CommentsActivity extends AppCompatActivity {
         //retrieving info from QRCode
         lessonQR = getIntent().getStringExtra("LessonID");
         courseQR = getIntent().getStringExtra("CourseID");
+        userMail = getIntent().getStringExtra("Email");
+
 
         String path = "Courses/" + course_id + "/Lessons/" + lesson_id + "/Comments";
 
@@ -91,6 +94,8 @@ public class CommentsActivity extends AppCompatActivity {
 
         if(lessonQR != null && courseQR != null){
             path = "Courses/" + courseQR + "/Lessons/" + lessonQR + "/Comments";
+            firebaseFirestore.document("Courses/"+courseQR+"/Lessons/"+lessonQR).update("usersList", FieldValue.arrayUnion(userMail));
+
         }
 
             //retrieving all comments linked to the lesson

@@ -12,7 +12,7 @@ public class Lesson extends LessonID
     private String lesson_name;
     private String courseID;
     private int countUser = 0;
-    private List<String> usersList;
+    private List<String> usersList; //rendere set, ma fa crashare
 
     public Lesson()
     {
