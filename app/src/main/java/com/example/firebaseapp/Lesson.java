@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class Lesson extends LessonID
+public class  Lesson extends LessonID
 {
     private String lesson_name;
     private String courseID;

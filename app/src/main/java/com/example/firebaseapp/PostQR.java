@@ -35,8 +35,7 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
 
     private Button scanBtn;
     private TextView formatTxt, contentTxt;
-    private List<Course> course_list;
-    private CourseRecyclerAdapter courseRecyclerAdapter;
+
     public Context contextQR;
     public static Bundle bundleQR;
     private FirebaseAuth firebaseAuth;
@@ -115,18 +114,13 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
                     }
                     if(isSubject){
 
-                        //contentTxt.setText("Stai seguendo Mobile" );
-                        //Bundle bundle = new Bundle();
-                        //bundle.putString("CourseID", course);
-                        //bundle.putString("LessonID", lesson);
-                        //getBundle(lesson, course);
                         Intent intentQR = new Intent(getApplicationContext(),CommentsActivity.class);
                         intentQR.putExtra("CourseID", course);
                         intentQR.putExtra("LessonID", lesson);
                         intentQR.putExtra("Email", userMail);
 
                        startActivity(intentQR);
-                        //intent.putExtras(bundle);
+
 
                     }else contentTxt.setText("Name not found: Lesson: " + lesson + " Course: " +course);
                 }
