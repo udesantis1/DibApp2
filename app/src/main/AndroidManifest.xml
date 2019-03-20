@@ -19,20 +19,6 @@
             android:name=".RatingActivity"></activity>
         <activity
             android:name=".LessonsActivity"
-            android:parentActivityName=".PastClasses">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".PastClasses" />
-        </activity>
-        <activity
-            android:name=".PastClasses"
-            android:parentActivityName=".ProfileActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ProfileActivity" />
-        </activity>
-        <activity
-            android:name=".Schedule"
             android:parentActivityName=".ProfileActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

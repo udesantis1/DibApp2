@@ -12,7 +12,7 @@ public class Lesson extends LessonID
     private String lesson_name;
     private String courseID;
     private int countUser = 0;
-    private List<String> usersList; //rendere set, ma fa crashare
+    private List<String> usersList;
 
     public Lesson()
     {
@@ -20,7 +20,7 @@ public class Lesson extends LessonID
 
     public Lesson(String courseID)
     {
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");     //Funziona
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         String currentTime = df.format(Calendar.getInstance().getTime());
         lesson_name = "Lezione del " + currentTime;
         usersList = new ArrayList<>();

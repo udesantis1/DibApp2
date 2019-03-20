@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -48,6 +50,7 @@ public class CommentsActivity extends AppCompatActivity {
     private String lesson_id;
     private String course_id;
     private Button rateButton;
+    private TextView countUser;
 
     //For QR Variables
     private String lessonQR;
@@ -82,6 +85,11 @@ public class CommentsActivity extends AppCompatActivity {
         comment_send_btn = findViewById(R.id.comment_send_btn);
         comment_list = findViewById(R.id.comment_list);
         rateButton=findViewById(R.id.buttonRate);
+        countUser = findViewById(R.id.count_user_field);
+
+
+
+
 
         commentsList = new ArrayList<>();
 
@@ -96,7 +104,18 @@ public class CommentsActivity extends AppCompatActivity {
             path = "Courses/" + courseQR + "/Lessons/" + lessonQR + "/Comments";
             firebaseFirestore.document("Courses/"+courseQR+"/Lessons/"+lessonQR).update("usersList", FieldValue.arrayUnion(userMail));
 
+            /*firebaseFirestore.document("Courses/"+courseQR+"/Lessons"+lessonQR).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+
+                    List<String> list = (List<String>) documentSnapshot.get("usersList");
+                    countUser.setText(list.size());
+                }
+            });  */
         }
+
+
+
 
             //retrieving all comments linked to the lesson
             firebaseFirestore.collection(path).orderBy("timestamp").addSnapshotListener(CommentsActivity.this, new EventListener<QuerySnapshot>() {
@@ -118,6 +137,8 @@ public class CommentsActivity extends AppCompatActivity {
                     }
                 }
             });
+
+
 
 
             comment_send_btn.setOnClickListener(new View.OnClickListener() {
@@ -153,6 +174,8 @@ public class CommentsActivity extends AppCompatActivity {
         rateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 openActivity();
             }
         });
