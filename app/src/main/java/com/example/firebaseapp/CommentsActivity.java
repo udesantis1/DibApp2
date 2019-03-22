@@ -22,6 +22,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
@@ -56,7 +58,7 @@ public class CommentsActivity extends AppCompatActivity {
     private String userMail = null;
 
     private FirebaseFirestore firebaseFirestore;
-    private FirebaseFirestore firebaseFirestore2;
+    private FirebaseAuth firebaseAuth;
     private String lesson_id;
     private String course_id;
     private Button rateButton;
@@ -73,7 +75,7 @@ public class CommentsActivity extends AppCompatActivity {
 
         //Initializing the firestore instance
         firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseFirestore2 = FirebaseFirestore.getInstance();
+
 
 
         //retrieving the ID from the lesson and course linked to these comments
@@ -97,6 +99,10 @@ public class CommentsActivity extends AppCompatActivity {
         rateButton=findViewById(R.id.buttonRate);
         countUser = findViewById(R.id.count_user_field);
 
+        comment_field.setVisibility(View.GONE);
+        comment_send_btn.setVisibility(View.GONE);
+        rateButton.setVisibility(View.GONE);
+
 
 
 
@@ -109,7 +115,7 @@ public class CommentsActivity extends AppCompatActivity {
         comment_list.setLayoutManager(new LinearLayoutManager(this));
         comment_list.setAdapter(commentRecyclerAdapter);
 
-
+        //check if user is here from scanning QR or from list of Lessons
         if(lessonQR != null && courseQR != null){
             path = "Courses/" + courseQR + "/Lessons/" + lessonQR + "/Comments";
             firebaseFirestore.document("Courses/"+courseQR+"/Lessons/"+lessonQR).update("usersList", FieldValue.arrayUnion(userMail));
@@ -155,6 +161,28 @@ public class CommentsActivity extends AppCompatActivity {
 
 
             //Da attivare solo se l'user email è presente nella lista degli user
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
+
+
+        firebaseFirestore.document(pathUsers).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Lesson lesson = documentSnapshot.toObject(Lesson.class);
+                for(String item : lesson.getUsersList())
+                {
+                    if(item.equalsIgnoreCase(user.getEmail()))
+                    {
+                        comment_field.setVisibility(View.VISIBLE);
+                        comment_send_btn.setVisibility(View.VISIBLE);
+                        rateButton.setVisibility(View.VISIBLE);
+                        break;
+                    }
+                }
+            }
+        });
+
 
             comment_send_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
