@@ -31,7 +31,7 @@
             android:layout_margin="15dp"
             android:baselineAligned="false"
             android:paddingTop="15dp"
-            android:text="Start Lesson" />
+            android:text="@string/StartLesson" />
 
         <Button
             android:id="@+id/buttonCreateLesson"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:paddingTop="15dp"
-            android:text="Create Lesson" />
+            android:text="@string/CreateLessons" />
 
         <Button
             android:id="@+id/btn_copy"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:paddingTop="15dp"
-            android:text="Copy the code for the QR" />
+            android:text="@string/QR" />
 
         <TextView
             android:id="@+id/QRID_txt"

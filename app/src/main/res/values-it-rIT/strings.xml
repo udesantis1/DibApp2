@@ -1,54 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
-    //activity_main
     <string name="app_name">FirebaseApp</string>
+
     <string name="Registrazioni">Registrazione Utente</string>
     <string name="Email">Inserire Email</string>
-    <string name="Password">Enter Email</string>
+    <string name="Password">Inserire Password</string>
     <string name="Registrazione">Registrati</string>
     <string name="singup">Non hai un account? Registrati</string>
     <string name="Cambialingua">Cambia lingua</string>
 
-    //activity_login
+
     <string name="Login">Login utente</string>
     <string name="Login1">Entra</string>
     <string name="Account">Non hai un account? Registrati qui</string>
 
-    //activity_comments
+
+
+    <string name="Home">Pagina iniziale</string>
+    <string name="Corsi">Corsi</string>
+    <string name="Cerca">Cerca</string>
+
     <string name="Commenti">Commenti :</string>
     <string name="Utenti">Utenti :</string>
     <string name="Valuta">Valuta :</string>
     <string name="AvvisoCommenti">Inserisci commento :</string>
 
-    //bottom_navigation
-    <string name="Home">Pagina iniziale</string>
-    <string name="Corsi">Corsi</string>
-    <string name="Cerca">Cerca</string>
-
-    //main_menu
     <string name="Logut">Esci dal profilo</string>
 
-    //activity_lessons
     <string name="Lista">Lista delle lezioni(Nome corso)</string>
 
-    //activity_rating
     <string name="Submit">Sottoscrivi</string>
 
-    //fragment_home
     <string name="StartLesson">Segui Lezione </string>
     <string name="CreateLessons">Crea lezione</string>
     <string name="QR">Copia il codice per il QR</string>
 
-    //fragment_favorites
     <string name="ITPS">Lista dei corsi di ITPS</string>
-
-
-
-
-
-
-
 
 
 

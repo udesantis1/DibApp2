@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FirebaseApp</string>
+
+    <string name="Registrazioni">User Registration</string>
+    <string name="Email">Enter Email</string>
+    <string name="Password">Enter Password</string>
+    <string name="Registrazione">Register</string>
+    <string name="singup">Do not have account? Sign up</string>
+    <string name="Cambialingua">Change language</string>
+
+    <string name="Login">User Login</string>
+    <string name="Login1">Login</string>
+    <string name="Account">Non hai un account? Registrati qui</string>
+
+
+
+    <string name="Home">Home</string>
+    <string name="Corsi">Courses</string>
+    <string name="Cerca">Serch</string>
+
+    <string name="Commenti">Comments :</string>
+    <string name="Utenti">Utenti :</string>
+    <string name="Valuta">Rate :</string>
+    <string name="AvvisoCommenti">your comments here ...</string>
+
+    <string name="Logut">Logout</string>
+
+    <string name="Lista">List of lessons (Course name)</string>
+
+    <string name="Submit">Submit</string>
+
+    <string name="StartLesson">Start Lessons</string>
+    <string name="CreateLessons">Create Lessons</string>
+    <string name="QR">Copy the code for the QR</string>
+
+    <string name="ITPS">List of ITPS courses</string>
+
+
+
+
+
+
+
+
+</resources>
