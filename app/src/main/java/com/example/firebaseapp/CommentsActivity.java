@@ -218,15 +218,13 @@ public class CommentsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                openActivity();
+                Intent intentRating= new Intent(getApplicationContext(),RatingActivity.class);
+                intentRating.putExtra("course_id",  course_id);
+                intentRating.putExtra("lesson_id", lesson_id);
+                startActivity(intentRating);
             }
         });
 
     }
-    public void openActivity(){
-        Intent intentRating= new Intent(getApplicationContext(),RatingActivity.class);
-       intentRating.putExtra("CourseID",  courseQR);
-       intentRating.putExtra("LessonID", lessonQR);
-        startActivity(intentRating);
-    }
+
 }
