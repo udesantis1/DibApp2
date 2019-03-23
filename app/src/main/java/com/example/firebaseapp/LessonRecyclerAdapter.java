@@ -127,8 +127,8 @@ public class LessonRecyclerAdapter extends RecyclerView.Adapter<LessonRecyclerAd
                                 public void onClick(View view) {
 
                                     new AlertDialog.Builder(context)
-                                            .setTitle("Delete Lesson")
-                                            .setMessage("Do you want to delete this lesson?")
+                                            .setTitle(R.string.CancellaLezione)
+                                            .setMessage(R.string.ConfermaCancellaLezione)
                                             .setIcon(android.R.drawable.ic_dialog_alert)
                                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                                 @Override
