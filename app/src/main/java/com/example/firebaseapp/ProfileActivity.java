@@ -43,6 +43,8 @@ public class ProfileActivity extends AppCompatActivity {
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
 
+
+
         //if the user is not logged in
         //that means current user will return null
         if(firebaseAuth.getCurrentUser() == null){

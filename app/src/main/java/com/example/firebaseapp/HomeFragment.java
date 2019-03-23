@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +38,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private Button buttonQR, buttonCreate, buttonCopy;
     private FirebaseFirestore firebaseFirestore;
-    private TextView qrID_txt;
+    private TextView qrID_txt, linkQR;
+    private Spanned text;
     //view objects
     private TextView textViewUserEmail;
 
@@ -81,6 +85,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         buttonCreate = (Button) view.findViewById(R.id.buttonCreateLesson);
         qrID_txt = (TextView) view.findViewById(R.id.QRID_txt);
         buttonCopy = (Button) view.findViewById(R.id.btn_copy);
+
+        linkQR = (TextView) view.findViewById(R.id.link);
+        text = Html.fromHtml("<a href='https://it.qr-code-generator.com/\n'>QR Generator</a>");
+        linkQR.setMovementMethod(LinkMovementMethod.getInstance());
+        linkQR.setText(text);
+        linkQR.setVisibility(View.GONE);
+
+
+
 
         //Link per il QR
         clipboardManager = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE);
@@ -203,6 +216,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                                                     qrID_txt.setText(lessonId + lesson.getCourseID());
                                                     qrID_txt.setVisibility(View.VISIBLE);
                                                     buttonCopy.setVisibility(View.VISIBLE);
+                                                    linkQR.setVisibility(View.VISIBLE);
+
                                                 }
                                             }
                                         });

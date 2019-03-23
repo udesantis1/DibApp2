@@ -120,7 +120,7 @@ public class CommentsActivity extends AppCompatActivity {
             path = "Courses/" + courseQR + "/Lessons/" + lessonQR + "/Comments";
             firebaseFirestore.document("Courses/"+courseQR+"/Lessons/"+lessonQR).update("usersList", FieldValue.arrayUnion(userMail));
 
-            pathUsers = "Courses"+ courseQR + "/Lessons/" + lessonQR;
+            pathUsers = "Courses/"+ courseQR + "/Lessons/" + lessonQR;
         }
 
 
