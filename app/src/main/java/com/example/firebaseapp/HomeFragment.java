@@ -73,7 +73,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         textViewUserEmail = (TextView) view.findViewById(R.id.textViewUserEmail);
 
         //displaying logged in user name
-        textViewUserEmail.setText("Welcome "+user.getEmail());
+        textViewUserEmail.setText(user.getEmail());
 
 
         //saving user info
@@ -173,8 +173,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         {
 
             new AlertDialog.Builder(getContext())
-                    .setTitle("Create Lesson")
-                    .setMessage("Do you really want to create a new lesson?")
+                    .setTitle(R.string.CreateLessons)
+                    .setMessage(R.string.Conferma)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {

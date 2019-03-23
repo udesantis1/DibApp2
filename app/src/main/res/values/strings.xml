@@ -1,13 +1,11 @@
 <resources>
-
-
     //activity_main
     <string name="app_name">FirebaseApp</string>
     <string name="Registrazioni">Registrazione Utente</string>
     <string name="Email">Inserire Email</string>
     <string name="Password">Enter Email</string>
     <string name="Registrazione">Registrati</string>
-    <string name="singup">Non hai un account? Registrati</string>
+    <string name="singup">Hai già un account? Accedi da qui</string>
     <string name="Cambialingua">Cambia lingua</string>
 
     //activity_login
@@ -38,23 +36,32 @@
     //fragment_home
     <string name="StartLesson">Segui Lezione </string>
     <string name="CreateLessons">Crea lezione</string>
+    <string name="Conferma">Vuoi veramente creare una nuona lezione?</string>
     <string name="QR">Copia il codice per il QR</string>
 
     //fragment_favorites
     <string name="ITPS">Lista dei corsi di ITPS</string>
 
+    //Homefragment
+    <string name="Benvenuto">Benvenuto</string>
 
+    //LessonsActivity
+    <string name="NoLessons">Nessuna lezione per questo corso</string>
 
-
-
-
-
-
-
-
-
+    //LessonsRecyclearAdapter
+    <string name="CancellaLezione">Cancella lezione</string>
+    <string name="ConfermaCancellaLezione">Vuoi eliminare questa lezione?</string>
 
 
 
 
 </resources>
+
+
+
+
+
+
+
+
+

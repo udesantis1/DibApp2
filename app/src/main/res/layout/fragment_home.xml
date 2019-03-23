@@ -14,14 +14,22 @@
 
 
         <TextView
-            android:id="@+id/textViewUserEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:paddingTop="15dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="20dp"
-            android:text="Large Text"
+            android:text="@string/Benvenuto"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/textViewUserEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button

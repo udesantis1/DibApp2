@@ -6,7 +6,7 @@
     <string name="Email">Inserire Email</string>
     <string name="Password">Inserire Password</string>
     <string name="Registrazione">Registrati</string>
-    <string name="singup">Non hai un account? Registrati</string>
+    <string name="singup">Hai già un account? Accedi da qui</string>
     <string name="Cambialingua">Cambia lingua</string>
 
 
@@ -36,6 +36,19 @@
     <string name="QR">Copia il codice per il QR</string>
 
     <string name="ITPS">Lista dei corsi di ITPS</string>
+
+    <string name="Benvenuto">Benvenuto</string>
+
+    <string name="Conferma">Vuoi veramente creare una nuona lezione?</string>
+
+    <string name="NoLessons">Nessuna lezione per questo corso</string>
+
+    <string name="CancellaLezione">Cancella lezione</string>
+
+    <string name="ConfermaCancellaLezione">Vuoi eliminare questa lezione?</string>
+
+
+
 
 
 
