@@ -18,7 +18,7 @@
 
     <string name="Home">Pagina iniziale</string>
     <string name="Corsi">Corsi</string>
-    <string name="Cerca">Cerca</string>
+    <string name="Orari">Orari</string>
 
     <string name="Commenti">Commenti :</string>
     <string name="Utenti">Utenti :</string>
@@ -36,6 +36,7 @@
     <string name="QR">Copia il codice per il QR</string>
 
     <string name="ITPS">Lista dei corsi di ITPS</string>
+    <string name="ITPS2">Orari dei corsi di ITPS</string>
 
     <string name="Benvenuto">Benvenuto</string>
 

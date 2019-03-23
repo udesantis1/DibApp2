@@ -17,7 +17,7 @@
 
     <string name="Home">Home</string>
     <string name="Corsi">Courses</string>
-    <string name="Cerca">Serch</string>
+    <string name="Orari">Schedule</string>
 
     <string name="Commenti">Comments :</string>
     <string name="Utenti">Utenti :</string>
@@ -35,6 +35,7 @@
     <string name="QR">Copy the code for the QR</string>
 
     <string name="ITPS">List of ITPS courses</string>
+    <string name="ITPS2">Schedule of ITPS courses</string>
 
     <string name="Benvenuto">Welcome</string>
 

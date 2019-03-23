@@ -22,7 +22,7 @@
     //bottom_navigation
     <string name="Home">Pagina iniziale</string>
     <string name="Corsi">Corsi</string>
-    <string name="Cerca">Cerca</string>
+    <string name="Orari">Orari</string>
 
     //main_menu
     <string name="Logut">Esci dal profilo</string>
@@ -41,6 +41,7 @@
 
     //fragment_favorites
     <string name="ITPS">Lista dei corsi di ITPS</string>
+    <string name="ITPS2">Orari dei corsi di ITPS</string>
 
     //Homefragment
     <string name="Benvenuto">Benvenuto</string>
