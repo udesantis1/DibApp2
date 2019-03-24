@@ -17,9 +17,10 @@
         android:text="@string/ITPS2"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:textColor="@android:color/black"
         android:padding="8dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/courses_list_view"
@@ -29,6 +30,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"
         android:layout_marginTop="42dp"/>
 
 

@@ -20,7 +20,7 @@
             android:layout_marginEnd="78dp"
             android:layout_marginRight="78dp"
             android:padding="10dp"
-            android:text="Course name"
+            android:text="@string/NomeCorso"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
