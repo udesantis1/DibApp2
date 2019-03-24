@@ -30,7 +30,8 @@
             android:layout_margin="15dp"
             android:hint="@string/Email"
             android:inputType="textEmailAddress"
-            android:textColorHint="#FFFF"/>
+            android:textColorHint="#FFFF"
+            android:autofillHints="#FFFF"/>
 
         <EditText
             android:id="@+id/editTextPassword"
