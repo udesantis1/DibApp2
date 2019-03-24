@@ -23,6 +23,7 @@
     <string name="Home">Pagina iniziale</string>
     <string name="Corsi">Corsi</string>
     <string name="Orari">Orari</string>
+    <string name="Cerca">Cerca</string>
 
     //main_menu
     <string name="Logut">Esci dal profilo</string>
