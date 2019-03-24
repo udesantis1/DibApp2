@@ -122,7 +122,7 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
                        startActivity(intentQR);
 
 
-                    }else contentTxt.setText("Name not found: Lesson: " + lesson + " Course: " +course);
+                    }else contentTxt.setText("Lesson non found ");
                 }
             });
         }
