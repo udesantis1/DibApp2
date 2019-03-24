@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/custom_activitymain"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:orientation="vertical"
+
         tools:ignore="MissingConstraints">
         <TextView
             android:id="@+id/comment_time"
@@ -19,7 +21,8 @@
             android:layout_height="wrap_content"
             android:padding="6dp"
             android:text="Time"
-            android:textColor="@android:color/black"
+            android:textAllCaps="false"
+            android:textColor="#FFFF"
             android:textSize="16dp"
             app:layout_constraintBottom_toTopOf="@+id/comment_message"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,9 +35,10 @@
             android:layout_height="wrap_content"
             android:padding="6dp"
             android:text="Loading Comment..."
-            android:textColor="@android:color/black"
             android:textSize="18dp"
             tools:ignore="MissingConstraints"
+            android:textAllCaps="false"
+            android:textColor="#FFFF"
             android:layout_marginBottom="15dp"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="44dp" />
@@ -45,9 +49,9 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="?android:attr/listDivider"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="8dp"
+
         tools:layout_editor_absoluteY="74dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/custom_activitymain"
+
     tools:context=".FavoritesFragment">
 
     <TextView
@@ -13,9 +15,10 @@
         android:text="@string/ITPS"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:textColor="@android:color/black"
         android:padding="8dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/courses_list_view"
@@ -25,7 +28,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="42dp"/>
+        android:layout_marginTop="42dp"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"/>
 
 
 

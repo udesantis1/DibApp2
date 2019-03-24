@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/custom_activitymain"
+
     android:layout_height="match_parent"
     tools:context=".LessonsActivity">
 
@@ -14,12 +16,13 @@
         android:padding="8dp"
         android:text="@string/Lista"
         android:textAlignment="center"
-        android:textColor="@android:color/black"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="1dp" />
+        tools:layout_editor_absoluteY="1dp"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lessons_list_view"
@@ -31,7 +34,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lessons_title"
-        app:layout_constraintVertical_bias="0.953" />
+        app:layout_constraintVertical_bias="0.953"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"/>
 
 
 

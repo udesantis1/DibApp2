@@ -5,7 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchFragment">
+    android:textAllCaps="false"
+    android:textColor="#FFFF"
+    android:background="@drawable/custom_activitymain"
+    tools:context=".SearchFragment"
+    >
 
     <TextView
         android:layout_width="match_parent"

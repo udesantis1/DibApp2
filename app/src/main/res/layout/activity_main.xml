@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/custom_activitymain"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_centerVertical="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/custom_activitymain">
 
 
         <TextView
@@ -19,7 +21,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/Registrazioni"
             android:id="@+id/textView"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FFFF"/>
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -27,7 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:hint="@string/Email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColorHint="#FFFF"/>
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -35,20 +39,28 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:hint="@string/Password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColorHint="#FFFF"
+            />
         <Button
             android:id="@+id/buttonSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:text="@string/Registrazione" />
+            android:text="@string/Registrazione"
+            android:textAllCaps="false"
+            android:textColor="#FFFF"
+            android:background="@drawable/custom_button"/>
 
         <Button
             android:id="@+id/button_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:text="@string/Cambialingua" />
+            android:text="@string/Cambialingua"
+            android:textAllCaps="false"
+            android:textColor="#FFFF"
+            android:background="@drawable/custom_button"/>
 
         <TextView
             android:text="@string/singup"
@@ -56,7 +68,8 @@
             android:textAlignment="center"
             android:layout_margin="15dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="#FFFF"/>
 
     </LinearLayout>
 

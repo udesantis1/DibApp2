@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/custom_activitymain"
     tools:context=".CommentsActivity">
 
 
@@ -23,7 +24,9 @@
         app:layout_constraintEnd_toStartOf="@+id/countUser_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"/>
 
     <TextView
         android:id="@+id/countUser_label"
@@ -38,7 +41,9 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/count_user_field"
         app:layout_constraintEnd_toStartOf="@+id/count_user_field"
         app:layout_constraintStart_toEndOf="@+id/comment_label"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"/>
 
     <TextView
         android:id="@+id/count_user_field"
@@ -54,7 +59,9 @@
         app:layout_constraintEnd_toStartOf="@+id/buttonRate"
         app:layout_constraintStart_toEndOf="@+id/countUser_label"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"/>
 
     <EditText
         android:id="@+id/comment_field"
@@ -72,7 +79,9 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/comment_send_btn"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"/>
 
     <ImageView
         android:id="@+id/comment_send_btn"
@@ -113,6 +122,9 @@
         app:layout_constraintBottom_toBottomOf="@+id/count_user_field"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/count_user_field"
-        app:layout_constraintTop_toTopOf="@+id/count_user_field" />
+        app:layout_constraintTop_toTopOf="@+id/count_user_field"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"
+        android:background="@drawable/custom_button"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -4,12 +4,15 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
+    android:background="@drawable/custom_activitymain"
     android:layout_marginTop="8dp">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/custom_activitymain"
+
         android:padding="8dp">
 
 
@@ -20,7 +23,9 @@
             android:text="Course name"
             android:textSize="20dp"
             android:padding="10dp"
-            android:textColor="@android:color/black" />
+            android:textAllCaps="false"
+            android:textColor="#FFFF"
+            />
 
     </RelativeLayout>
 
