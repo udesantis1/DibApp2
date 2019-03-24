@@ -44,34 +44,33 @@
             android:id="@+id/buttonScanQR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="15dp"
+            android:background="@drawable/custom_button"
             android:baselineAligned="false"
-            android:paddingTop="15dp"
             android:text="@string/StartLesson"
             android:textAllCaps="false"
-            android:textColor="#FFFF"
-            android:background="@drawable/custom_button" />
+            android:textColor="#FFFF" />
 
         <Button
             android:id="@+id/buttonCreateLesson"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:paddingTop="15dp"
-            android:text="@string/CreateLessons" android:textAllCaps="false"
-            android:textColor="#FFFF"
-            android:background="@drawable/custom_button"/>
+            android:background="@drawable/custom_button"
+            android:text="@string/CreateLessons"
+            android:textAllCaps="false"
+            android:textColor="#FFFF" />
 
         <Button
             android:id="@+id/btn_copy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:paddingTop="15dp"
+            android:background="@drawable/custom_button"
             android:text="@string/QR"
             android:textAllCaps="false"
-            android:textColor="#FFFF"
-            android:background="@drawable/custom_button"/>
+            android:textColor="#FFFF" />
 
         <TextView
             android:id="@+id/QRID_txt"

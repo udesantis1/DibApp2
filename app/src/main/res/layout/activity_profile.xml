@@ -26,7 +26,6 @@
         app:menu="@menu/bottom_navigation"
         android:textAllCaps="false"
         android:textColor="#FFFF"
-        android:background="@drawable/custom_bar_home"
-        />
+        android:background="@drawable/custom_bar_home"/>
 
 </RelativeLayout>

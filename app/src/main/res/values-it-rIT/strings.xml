@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FirebaseApp</string>
+    <string name="app_name">DIBAPP</string>
 
     <string name="Registrazioni">Registrazione Utente</string>
     <string name="Email">Inserire Email</string>
