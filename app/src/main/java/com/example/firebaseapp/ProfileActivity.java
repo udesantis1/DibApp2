@@ -102,7 +102,7 @@ public class ProfileActivity extends AppCompatActivity {
                     selectedFragment = new SearchFragment();
                     break;
             }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).addToBackStack(null).commit();
 
             return true;
         }

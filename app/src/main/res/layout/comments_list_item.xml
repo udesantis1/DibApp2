@@ -22,7 +22,7 @@
             android:padding="6dp"
             android:text="Time"
             android:textAllCaps="false"
-            android:textColor="#FFFF"
+            android:textColor="@android:color/black"
             android:textSize="16dp"
             app:layout_constraintBottom_toTopOf="@+id/comment_message"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,8 +38,8 @@
             android:textSize="18dp"
             tools:ignore="MissingConstraints"
             android:textAllCaps="false"
-            android:textColor="#FFFF"
-            android:layout_marginBottom="15dp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="6dp"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="44dp" />
 
@@ -52,6 +52,7 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="8dp"
 
-        tools:layout_editor_absoluteY="74dp" />
+        tools:layout_editor_absoluteY="74dp"
+        android:background="@android:color/black"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -12,56 +12,54 @@
         android:id="@+id/comment_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:padding="10dp"
+        android:padding="6dp"
         android:text="@string/Commenti"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/countUser_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        android:textAllCaps="false"
-        android:textColor="#FFFF"/>
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/countUser_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:padding="10dp"
+        android:padding="6dp"
         android:text="@string/Utenti"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/count_user_field"
         app:layout_constraintEnd_toStartOf="@+id/count_user_field"
         app:layout_constraintStart_toEndOf="@+id/comment_label"
-        tools:ignore="MissingConstraints"
-        android:textAllCaps="false"
-        android:textColor="#FFFF"/>
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/count_user_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginEnd="12dp"
         android:layout_marginRight="18dp"
         android:inputType="number"
-        android:padding="10dp"
+        android:padding="6dp"
         android:text="0"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/buttonRate"
         app:layout_constraintStart_toEndOf="@+id/countUser_label"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        android:textAllCaps="false"
-        android:textColor="#FFFF"/>
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/comment_field"
@@ -81,7 +79,7 @@
         app:layout_constraintEnd_toStartOf="@+id/comment_send_btn"
         app:layout_constraintStart_toStartOf="parent"
         android:textAllCaps="false"
-        android:textColor="#FFFF"/>
+        android:textColor="@android:color/black"/>
 
     <ImageView
         android:id="@+id/comment_send_btn"
@@ -92,7 +90,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="17dp"
         android:padding="8dp"
-        android:src="@drawable/ic_send_green_24dp"
+        android:src="@drawable/ic_send_blue_24dp"
         android:text="Send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,10 +112,10 @@
 
     <Button
         android:id="@+id/buttonRate"
-        android:layout_width="84dp"
-        android:layout_height="49dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/Valuta"
         app:layout_constraintBottom_toBottomOf="@+id/count_user_field"
         app:layout_constraintEnd_toEndOf="parent"

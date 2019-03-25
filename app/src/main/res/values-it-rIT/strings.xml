@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">DIBAPP</string>
+    <string name="app_name">DibApp</string>
 
     <string name="Registrazioni">Registrazione Utente</string>
     <string name="Email">Inserire Email</string>
@@ -22,10 +22,10 @@
 
     <string name="Commenti">Commenti :</string>
     <string name="Utenti">Utenti :</string>
-    <string name="Valuta">Valuta :</string>
-    <string name="AvvisoCommenti">Inserisci commento :</string>
+    <string name="Valuta">Valuta</string>
+    <string name="AvvisoCommenti">Inserisci commento </string>
 
-    <string name="Logut">Esci dal profilo</string>
+    <string name="Logut">Disconnetti</string>
 
     <string name="Lista">Lista delle lezioni(Nome corso)</string>
 
@@ -40,7 +40,7 @@
 
     <string name="Benvenuto">Benvenuto</string>
 
-    <string name="Conferma">Vuoi veramente creare una nuona lezione?</string>
+    <string name="Conferma">Vuoi davvero creare una nuova lezione?</string>
 
     <string name="NoLessons">Nessuna lezione per questo corso</string>
 

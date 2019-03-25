@@ -75,6 +75,8 @@ public class CommentsActivity extends AppCompatActivity {
 
         //Initializing the firestore instance
         firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
 
 
 
@@ -99,12 +101,10 @@ public class CommentsActivity extends AppCompatActivity {
         rateButton=findViewById(R.id.buttonRate);
         countUser = findViewById(R.id.count_user_field);
 
+
         comment_field.setVisibility(View.GONE);
         comment_send_btn.setVisibility(View.GONE);
         rateButton.setVisibility(View.GONE);
-
-
-
 
 
         commentsList = new ArrayList<>();
@@ -151,7 +151,7 @@ public class CommentsActivity extends AppCompatActivity {
                     for (DocumentChange doc : queryDocumentSnapshots.getDocumentChanges()) {
                         if (doc.getType() == DocumentChange.Type.ADDED) {
                             String commentId = doc.getDocument().getId(); //useless?
-                            Comment comments = doc.getDocument().toObject(Comment.class); // useless?
+                            Comment comments = doc.getDocument().toObject(Comment.class);
                             commentsList.add(comments);
                             commentRecyclerAdapter.notifyDataSetChanged();  //real time changes
                         }
@@ -160,12 +160,11 @@ public class CommentsActivity extends AppCompatActivity {
             });
 
 
-            //Da attivare solo se l'user email è presente nella lista degli user
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        final FirebaseUser user = firebaseAuth.getCurrentUser();
 
 
+
+
+        //Check if user was present to this lesson
         firebaseFirestore.document(pathUsers).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {

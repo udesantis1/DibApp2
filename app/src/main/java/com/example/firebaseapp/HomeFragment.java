@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         //saving user info
         admin.setEmail(user.getEmail());
-        //admin.setCourseId(user.getUid());
+
 
         buttonQR = (Button) view.findViewById(R.id.buttonScanQR);
 
@@ -179,6 +179,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             final Lesson lesson = new Lesson(admin.getCourseId());
+                            lesson.addUser(admin.getEmail());
                             firebaseFirestore.collection("Courses/"+lesson.getCourseID()+"/Lessons").add(lesson).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentReference> task) {

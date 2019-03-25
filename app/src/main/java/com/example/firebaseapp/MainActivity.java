@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         Button cambiaLingua = findViewById(R.id.button_1);
-        // Button cambia = findViewById(R.id.button_2);
+        //
 
         cambiaLingua.setOnClickListener(new View.OnClickListener() {
             @Override

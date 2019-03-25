@@ -19,6 +19,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+//this fragment contains the list of the courses
 public class FavoritesFragment extends Fragment {
 
     private RecyclerView courses_list_view;
@@ -42,7 +43,7 @@ public class FavoritesFragment extends Fragment {
         courses_list_view.setHasFixedSize(true);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-        //SnapshotListener help to retrieve data in real time
+        //SnapshotListener helps to retrieve data in real time
         firebaseFirestore.collection("Courses").orderBy("courseName").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {

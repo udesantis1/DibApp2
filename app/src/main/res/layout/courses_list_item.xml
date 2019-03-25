@@ -11,9 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/custom_activitymain"
-
-        android:padding="8dp">
+        android:background="@drawable/custom_activitymain">
 
 
         <TextView
@@ -24,7 +22,8 @@
             android:textSize="20dp"
             android:padding="10dp"
             android:textAllCaps="false"
-            android:textColor="#FFFF"
+            android:textColor="@android:color/black"
+            android:background="#fff"
             />
 
     </RelativeLayout>

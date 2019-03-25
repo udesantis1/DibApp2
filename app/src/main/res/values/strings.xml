@@ -1,6 +1,6 @@
 <resources>
     //activity_main
-    <string name="app_name">DIBAPP</string>
+    <string name="app_name">DibApp</string>
     <string name="Registrazioni">Registrazione Utente</string>
     <string name="Email">Inserire Email</string>
     <string name="Password">Enter Email</string>

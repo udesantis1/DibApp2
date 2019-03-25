@@ -90,8 +90,6 @@ public class LessonRecyclerAdapter extends RecyclerView.Adapter<LessonRecyclerAd
         viewHolder.setImage_delete();
 
 
-
-
         //cercare se l'utente corrente è un admin o no
         mFireStore = FirebaseFirestore.getInstance();
 

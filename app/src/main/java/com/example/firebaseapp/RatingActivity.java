@@ -66,7 +66,7 @@ public class RatingActivity extends AppCompatActivity {
         btnSubmit= (Button)findViewById(R.id.btn_send);
         ratingDisplayTextView= (TextView)findViewById(R.id.textView);
 
-        //retrieving id from comment linked to these rate
+        //retrieving id from lesson linked to these rate
         lesson_id = getIntent().getStringExtra("lesson_id");
         course_id = getIntent().getStringExtra("course_id");
         ratingList = new ArrayList<>();
