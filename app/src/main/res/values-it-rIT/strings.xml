@@ -47,20 +47,23 @@
     <string name="CancellaLezione">Cancella lezione</string>
 
     <string name="ConfermaCancellaLezione">Vuoi eliminare questa lezione?</string>
-
     <string name="Cerca">Cerca</string>
-
     <string name="NomeCorso">Nome Corso</string>
 
     <string name="Valutazione">Il tuo voto e\' :</string>
-
     <string name="Voto">Grazie per aver votato</string>
 
     <string name="InserisciPassword">Inserisci Password</string>
-
     <string name="Inserisci">Inserisci Email</string>
-
     <string name="Logging">Accesso in corso...</string>
+
+    <string name="Id_lezione">Id lezione </string>
+    <string name="Id_corso">Id corso</string>
+
+    <string name="Errore">Errore</string>
+    <string name="Insegnantenonautorizzato">Errore, insegnante non autorizzato</string>
+    <string name="LezioneRimossas">Lezione rimossa</string>
+
 
 
 

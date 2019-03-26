@@ -40,26 +40,26 @@
     <string name="Benvenuto">Welcome</string>
 
     <string name="Conferma">Do you really want to create a new lesson?</string>
-
     <string name="NoLessons">No lessons for this course</string>
-
     <string name="CancellaLezione">Delete Lesson</string>
-
     <string name="ConfermaCancellaLezione">Do you want to delete this lesson?</string>
 
     <string name="Cerca">Search</string>
-
     <string name="NomeCorso">Course Name</string>
 
     <string name="Valutazione">Your rating is :</string>
-
     <string name="Voto">Thanks for rate</string>
 
     <string name="InserisciPassword">Enter Password</string>
-
     <string name="Inserisci">Enter Email</string>
-
     <string name="Logging">Logging...</string>
+
+    <string name="Id_lezione">lesson_id</string>
+    <string name="Id_corso">corse_id</string>
+
+    <string name="Errore">Error</string>
+    <string name="Insegnantenonautorizzato">Error, teacher not allowed</string>
+    <string name="LezioneRimossas">Lesson removed</string>
 
 
 
