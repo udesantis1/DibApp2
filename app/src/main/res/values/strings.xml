@@ -63,7 +63,7 @@
 
     //loging
     <string name="InserisciPassword">Inserisci Password</string>
-    <string name="InserisciEmail">Inserisci Email</string>
+    <string name="Inserisci">Inserisci Email</string>
     <string name="Logging">Accesso in corso...</string>
 
 
