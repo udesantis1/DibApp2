@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +32,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import static android.content.Context.CLIPBOARD_SERVICE;
@@ -111,10 +114,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
 
         //cercare se l'utente corrente è un admin o no
-        mFireStore = FirebaseFirestore.getInstance();
+        //mFireStore = FirebaseFirestore.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
 
-        mFireStore.collection("AdminUsers")
+    /*    mFireStore.collection("AdminUsers")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@javax.annotation.Nullable QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
@@ -142,9 +146,32 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                             buttonCreate.setVisibility(View.VISIBLE);
                         }
                     }
-                });
+                });  */
 
-        firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseFirestore.collection("AdminUsers").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                boolean find = false;
+
+                for(QueryDocumentSnapshot doc: task.getResult())
+                {
+                    String email = doc.getString("email");
+                    if(email.equals(admin.getEmail())) {
+                        find = true;
+                        //getting admin's courseID
+                        admin.setCourseId(doc.getString("courseId"));
+                        break;
+                    }
+                }
+                if(find)
+                {
+                    buttonCreate.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+
 
         //adding listener to button
 
