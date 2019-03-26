@@ -35,7 +35,7 @@ public class CourseRecyclerAdapter2 extends RecyclerView.Adapter<CourseRecyclerA
 
         private TextView course_name_view;
 
-        //private TextView time_text_view;
+        private TextView time_text_view;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -50,11 +50,11 @@ public class CourseRecyclerAdapter2 extends RecyclerView.Adapter<CourseRecyclerA
             course_name_view.setText(text);
         }
 
-       /* public void setTime(String text)
+        public void setTime(String text)
         {
             time_text_view = mView.findViewById(R.id.time_text_view);
             time_text_view.setText(text);
-        }*/
+        }
 
     }
 
@@ -76,6 +76,9 @@ public class CourseRecyclerAdapter2 extends RecyclerView.Adapter<CourseRecyclerA
 
         final String course_name = course_list.get(i).getCourseName();
         viewHolder.setName(course_name);
+
+        final String course_time = course_list.get(i).getCourseTime();
+        viewHolder.setTime(course_time);
 
 
 
