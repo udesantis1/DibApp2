@@ -81,7 +81,7 @@ public class CommentsActivity extends AppCompatActivity {
 
 
         //retrieving the ID from the lesson and course linked to these comments
-        lesson_id = getIntent().getStringExtra("lesson_id");
+        lesson_id = getIntent().getStringExtra("Id_lezione");
         course_id = getIntent().getStringExtra("course_id");
 
 

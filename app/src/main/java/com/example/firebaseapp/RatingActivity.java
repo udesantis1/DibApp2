@@ -108,8 +108,13 @@ public class RatingActivity extends AppCompatActivity {
                    });
 
                    btnSubmit.setEnabled(false);
-                   Toast.makeText(RatingActivity.this, "Thanks for rate", Toast.LENGTH_SHORT).show();
-                   ratingDisplayTextView.setText("Your rating is:" + ratingBar.getRating());
+                   Toast.makeText(RatingActivity.this, R.string.Voto, Toast.LENGTH_SHORT).show();
+
+                   //ratingDisplayTextView=(TextView) findViewById(R.id.textView);
+                   String nomeStringa = RatingActivity.this.getResources().getString(R.string.Valutazione);
+                   ratingDisplayTextView.setText(nomeStringa+ratingBar.getRating());
+
+
 
                }
            });
