@@ -1,6 +1,8 @@
 package com.example.firebaseapp;
 
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +19,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentChange;
@@ -26,6 +30,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 
@@ -42,13 +47,14 @@ public class RatingActivity extends AppCompatActivity {
     //RatingBar
     private RatingBar ratingBar;
     private Button btnSubmit;//Button send rating
-    TextView ratingDisplayTextView; // View number rate
+    TextView ratingDisplayTextView, averageText; // View number rate
     //Firestore
     FirebaseFirestore mFirestore;
+    FirebaseAuth firebaseAuth;
 
     private String lesson_id;
     private String course_id;
-    private List<Rating> ratingList;
+    //private List<Rating> ratingList;
 
 
 
@@ -61,17 +67,24 @@ public class RatingActivity extends AppCompatActivity {
 
         //Initializing the firestore instance
         mFirestore=FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
+
         //Inizializing item
         ratingBar=(RatingBar) findViewById(R.id.ratingBar);
         btnSubmit= (Button)findViewById(R.id.btn_send);
+        averageText = findViewById(R.id.average_text);
         ratingDisplayTextView= (TextView)findViewById(R.id.textView);
+
+        ratingBar.setStepSize(1);
 
         //retrieving id from lesson linked to these rate
         lesson_id = getIntent().getStringExtra("lesson_id");
         course_id = getIntent().getStringExtra("course_id");
-        ratingList = new ArrayList<>();
+        //ratingList = new ArrayList<>();
 
        final String path = "Courses/" + course_id + "/Lessons/" + lesson_id + "/Rates";
+
 
                 
            btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -79,8 +92,10 @@ public class RatingActivity extends AppCompatActivity {
                public void onClick(View v) {
 
                    int b = (int) ratingBar.getRating();
-                   Map<String, Object> ratin = new HashMap<>();
-                   ratin.put("Rating", b);
+                   Map<String, Integer> ratin = new HashMap<>();
+                   ratin.put(user.getEmail(), b);
+
+
                    mFirestore.collection("Courses/" + course_id + "/Lessons/" + lesson_id + "/Rates").add(ratin).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                        @Override
                        public void onComplete(@NonNull Task<DocumentReference> task) {

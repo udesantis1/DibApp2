@@ -5,7 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class  Lesson extends LessonID
 {
@@ -13,6 +15,7 @@ public class  Lesson extends LessonID
     private String courseID;
     private int countUser = 0;
     private List<String> usersList;
+    //private HashMap<String, Integer> ratesList;
 
     public Lesson()
     {
@@ -24,6 +27,7 @@ public class  Lesson extends LessonID
         String currentTime = df.format(Calendar.getInstance().getTime());
         lesson_name = "Lezione del " + currentTime;
         usersList = new ArrayList<>();
+        //ratesList = new HashMap<>();
         this.courseID = courseID;
     }
 
@@ -45,4 +49,6 @@ public class  Lesson extends LessonID
     {
         usersList.add(email);
     }
+
+    //public HashMap<String, Integer> getRatesList() {return ratesList;}
 }

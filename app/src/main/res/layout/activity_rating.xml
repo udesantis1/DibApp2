@@ -15,6 +15,16 @@
         android:gravity="center"
         tools:ignore="MissingConstraints">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Testo"
+            android:gravity="center"
+            android:id="@+id/average_text"
+            android:textSize="18dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/black"/>
+
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"

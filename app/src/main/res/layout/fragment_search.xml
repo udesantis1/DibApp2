@@ -1,39 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textAllCaps="false"
-    android:textColor="#FFFF"
-    android:background="@drawable/custom_activitymain"
-    tools:context=".SearchFragment"
-    >
+    tools:context=".SearchFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/ITPS2"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:padding="8dp"
-        tools:ignore="MissingConstraints"
-        android:textAllCaps="false"
-        android:textColor="@android:color/black"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/courses_list_view"
+    <com.github.barteksc.pdfviewer.PDFView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textAllCaps="false"
-        android:textColor="#FFFF"
-        android:layout_marginTop="42dp"/>
+        android:id="@+id/pdfViewer"
+        tools:ignore="MissingConstraints">
 
+    </com.github.barteksc.pdfviewer.PDFView>
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress_bar"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:visibility="gone"
+        />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
+
