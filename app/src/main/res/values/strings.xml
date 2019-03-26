@@ -57,6 +57,14 @@
     //Courses_list_item
     <string name="NomeCorso">Nome Corso</string>
 
+    //RatingAcitivity
+    <string name="Valutazione">Il tuo voto e\' :</string>
+    <string name="Voto">Grazie per aver votato</string>
+
+
+
+
+
 
 
 
