@@ -81,12 +81,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         //checking if email and passwords are empty
         if(TextUtils.isEmpty(email)){
-            Toast.makeText(this,"Please enter email",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,R.string.InserisciEmail,Toast.LENGTH_LONG).show();
             return;
         }
 
         if(TextUtils.isEmpty(password)){
-            Toast.makeText(this,"Please enter password",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,R.string.InserisciPassword,Toast.LENGTH_LONG).show();
             return;
         }
 

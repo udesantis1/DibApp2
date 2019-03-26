@@ -61,6 +61,13 @@
     <string name="Valutazione">Il tuo voto e\' :</string>
     <string name="Voto">Grazie per aver votato</string>
 
+    //login
+    <string name="InserisciPassword">Inserisci Password</string>
+    <string name="InserisciEmail">Inserisci Email</string>
+    <string name="Logging">Accesso in corso...</string>
+
+
+
 
 
 

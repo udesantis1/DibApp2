@@ -95,9 +95,9 @@ public class RatingActivity extends AppCompatActivity {
                    btnSubmit.setEnabled(false);
                    Toast.makeText(RatingActivity.this, R.string.Voto, Toast.LENGTH_SHORT).show();
 
-                   ratingDisplayTextView=(TextView) findViewById(R.id.textView1);
-
-                   ratingDisplayTextView.setText(" "+ratingBar.getRating());
+                   //ratingDisplayTextView=(TextView) findViewById(R.id.textView);
+                   String nomeStringa = RatingActivity.this.getResources().getString(R.string.Valutazione);
+                   ratingDisplayTextView.setText(nomeStringa+ratingBar.getRating());
 
 
 
