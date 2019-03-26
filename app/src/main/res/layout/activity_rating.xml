@@ -46,7 +46,7 @@
 
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="214dp"
+            android:layout_width="42dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
