@@ -81,7 +81,7 @@ public class CommentsActivity extends AppCompatActivity {
 
 
         //retrieving the ID from the lesson and course linked to these comments
-        lesson_id = getIntent().getStringExtra("Id_lezione");
+        lesson_id = getIntent().getStringExtra("lesson_id");
         course_id = getIntent().getStringExtra("course_id");
 
 
@@ -90,8 +90,9 @@ public class CommentsActivity extends AppCompatActivity {
         courseQR = getIntent().getStringExtra("CourseID");
         userMail = getIntent().getStringExtra("Email");
 
-
+        //Specific comments collection
         String path = "Courses/" + course_id + "/Lessons/" + lesson_id + "/Comments";
+        //Specific lesson document
         String pathUsers = "Courses/"+course_id+"/Lessons/"+lesson_id;
 
 
