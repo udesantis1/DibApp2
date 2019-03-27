@@ -11,7 +11,7 @@
 
     <string name="Login">User Login</string>
     <string name="Login1">Login</string>
-    <string name="Account">you have alredy any account? Sing in</string>
+    <string name="Account">Do you have already an account? Sing in</string>
 
 
 
@@ -22,11 +22,11 @@
     <string name="Commenti">Comments :</string>
     <string name="Utenti">Utenti :</string>
     <string name="Valuta">Rate</string>
-    <string name="AvvisoCommenti">your comments here ...</string>
+    <string name="AvvisoCommenti">Your comments here ...</string>
 
     <string name="Logut">Logout</string>
 
-    <string name="Lista">List of lessons (Course name)</string>
+    <string name="Lista">"List of the lessons of "</string>
 
     <string name="Submit">Submit</string>
 
@@ -47,22 +47,31 @@
     <string name="Cerca">Search</string>
     <string name="NomeCorso">Course Name</string>
 
-    <string name="Valutazione">Your rating is :</string>
+    <string name="Valutazione">"Your rating is: "</string>
     <string name="Voto">Thanks for rate</string>
 
     <string name="InserisciPassword">Enter Password</string>
     <string name="Inserisci">Enter Email</string>
     <string name="Logging">Logging...</string>
 
-    <string name="Id_lezione">lesson_id</string>
-    <string name="Id_corso">corse_id</string>
+
 
     <string name="Errore">Error</string>
     <string name="Insegnantenonautorizzato">Error, teacher not allowed</string>
     <string name="LezioneRimossas">Lesson removed</string>
 
+    <string name="ErrorRatePost">Error posting rate</string>
 
+    <string name="ErrorData">Error, incorrect data</string>
+    <string name="LoggingMsg">Logging...</string>
 
+    <string name="CommentiVuoti">No comments for this lesson</string>
+
+    <string name="ErrorCommPost">Erorr posting comment</string>
+
+    <string name="TestoCopiato">Text Copied!</string>
+
+    <string name="TestoAggiunto">Lesson added!!</string>
 
 
 

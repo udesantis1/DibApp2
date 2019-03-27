@@ -94,8 +94,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         //displaying a progress dialog
 
 
-        String Logging = Login.this.getResources().getString(R.string.Logging);
-        progressDialog.setMessage(Logging);
+        String logging = Login.this.getResources().getString(R.string.Logging);
+        progressDialog.setMessage(logging);
 
         progressDialog.show();
 
@@ -121,7 +121,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         }
                         else
                         {
-                            Toast.makeText(getApplicationContext(),"Error, data incorrect", Toast.LENGTH_SHORT).show();
+                            String errorData = Login.this.getResources().getString(R.string.ErrorData);
+                            Toast.makeText(getApplicationContext(),errorData, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

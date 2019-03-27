@@ -106,7 +106,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 String qr = qrID_txt.getText().toString();
                 clipData = ClipData.newPlainText("QR", qr);
                 clipboardManager.setPrimaryClip(clipData);
-                Toast.makeText(getContext(), "Text copied!",Toast.LENGTH_SHORT).show();
+                String copyText = HomeFragment.this.getResources().getString(R.string.TestoCopiato);
+                Toast.makeText(getContext(), copyText,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -118,35 +119,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         firebaseFirestore = FirebaseFirestore.getInstance();
 
 
-    /*    mFireStore.collection("AdminUsers")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@javax.annotation.Nullable QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                        boolean find = false;
-                        if(e != null){
-                            Log.d(TAG, "error : "+ e.getMessage());
-                        }
 
-                        for(DocumentSnapshot doc : documentSnapshots){
-                            String email = doc.getString("email");
-
-
-
-                            if(email.equals(admin.getEmail())) {
-                                find = true;
-                                //getting admin's courseID
-                                admin.setCourseId(doc.getString("courseId"));
-                                break;
-                            }
-                            else{
-                                find = false;
-                            }
-                        }
-                        if (find){
-                            buttonCreate.setVisibility(View.VISIBLE);
-                        }
-                    }
-                });  */
 
         firebaseFirestore.collection("AdminUsers").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -212,7 +185,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                                 public void onComplete(@NonNull Task<DocumentReference> task) {
                                     if(task.isSuccessful())
                                     {
-                                        Toast.makeText(getContext(), "Lesson added", Toast.LENGTH_SHORT).show();
+                                        String addText = HomeFragment.this.getResources().getString(R.string.TestoAggiunto);
+                                        Toast.makeText(getContext(), addText, Toast.LENGTH_SHORT).show();
 
                                         //Firestore per ottenere id corso e lezione per il qr
                                         mFireStore = FirebaseFirestore.getInstance();

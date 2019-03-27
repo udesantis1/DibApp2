@@ -100,7 +100,8 @@ public class RatingActivity extends AppCompatActivity {
                        @Override
                        public void onComplete(@NonNull Task<DocumentReference> task) {
                            if (!task.isSuccessful()) {
-                               Toast.makeText(RatingActivity.this, "Error posting rate", Toast.LENGTH_SHORT).show();
+                               String postError = RatingActivity.this.getResources().getString(R.string.ErrorRatePost);
+                               Toast.makeText(RatingActivity.this, postError, Toast.LENGTH_SHORT).show();
                            } else {
                                ratingBar.setRating(0);
                            }

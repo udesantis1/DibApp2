@@ -27,7 +27,7 @@
 
     <string name="Logut">Disconnetti</string>
 
-    <string name="Lista">Lista delle lezioni(Nome corso)</string>
+    <string name="Lista">"Lista delle lezioni di "</string>
 
     <string name="Submit">Sottoscrivi</string>
 
@@ -50,19 +50,31 @@
     <string name="Cerca">Cerca</string>
     <string name="NomeCorso">Nome Corso</string>
 
-    <string name="Valutazione">Il tuo voto e\' :</string>
+    <string name="Valutazione">"Il tuo voto è: "</string>
     <string name="Voto">Grazie per aver votato</string>
 
     <string name="InserisciPassword">Inserisci Password</string>
     <string name="Inserisci">Inserisci Email</string>
     <string name="Logging">Accesso in corso...</string>
 
-    <string name="Id_lezione">Id lezione </string>
-    <string name="Id_corso">Id corso</string>
 
     <string name="Errore">Errore</string>
     <string name="Insegnantenonautorizzato">Errore, insegnante non autorizzato</string>
     <string name="LezioneRimossas">Lezione rimossa</string>
+
+    <string name="ErrorRatePost">Errore inserimento voto</string>
+
+    <string name="ErrorData">Errore, dati non corretti!</string>
+    <string name="LoggingMsg">Accesso in corso...</string>
+
+    <string name="CommentiVuoti">Nessun commento per questa lezione</string>
+
+    <string name="ErrorCommPost">Errore nell\'invio del commento</string>
+
+    <string name="TestoCopiato">Testo Copiato!</string>
+
+    <string name="TestoAggiunto">Lezione Aggiunta!</string>
+
 
 
 
