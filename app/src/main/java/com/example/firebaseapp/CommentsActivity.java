@@ -146,7 +146,8 @@ public class CommentsActivity extends AppCompatActivity {
 
                     if (queryDocumentSnapshots.isEmpty()) {
                         commentsList.clear();
-                        Toast.makeText(CommentsActivity.this, "No comments for this lesson", Toast.LENGTH_LONG).show();
+                        String emptyComments = CommentsActivity.this.getResources().getString(R.string.CommentiVuoti);
+                        Toast.makeText(CommentsActivity.this, emptyComments, Toast.LENGTH_LONG).show();
                     }
 
                     for (DocumentChange doc : queryDocumentSnapshots.getDocumentChanges()) {
@@ -204,7 +205,8 @@ public class CommentsActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<DocumentReference> task) {
                             if (!task.isSuccessful()) {
-                                Toast.makeText(CommentsActivity.this, "Error posting comment", Toast.LENGTH_SHORT).show();
+                                String errorPost = CommentsActivity.this.getResources().getString(R.string.ErrorCommPost);
+                                Toast.makeText(CommentsActivity.this, errorPost, Toast.LENGTH_SHORT).show();
                             } else {
                                 comment_field.setText("");
                             }

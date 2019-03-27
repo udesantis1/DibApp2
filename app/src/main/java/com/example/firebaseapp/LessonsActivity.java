@@ -64,7 +64,8 @@ public class LessonsActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         //Sistemare
 
-        lessons_title.setText("Lista delle lezioni di " + course_name);
+        String lessonList = LessonsActivity.this.getResources().getString(R.string.Lista);
+        lessons_title.setText(lessonList + course_name);
 
         firebaseFirestore.collection("Courses/" + course_id + "/Lessons").orderBy("lesson_name").addSnapshotListener(LessonsActivity.this, new EventListener<QuerySnapshot>() {
             @Override

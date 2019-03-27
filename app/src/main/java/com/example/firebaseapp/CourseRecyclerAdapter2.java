@@ -16,17 +16,15 @@ import java.util.List;
 public class CourseRecyclerAdapter2 extends RecyclerView.Adapter<CourseRecyclerAdapter2.ViewHolder> {
 
     private List<Course> course_list;
-    //private List<String> time_list;
 
     private Context context;
     private FirebaseFirestore firebaseFirestore;
 
 
-    public CourseRecyclerAdapter2(List<Course> course_list /*,List<String> time_list*/)
+    public CourseRecyclerAdapter2(List<Course> course_list)
     {
         this.course_list = course_list;
 
-        //this.time_list = time_list;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

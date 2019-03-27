@@ -12,12 +12,17 @@
     <string name="Login">Login utente</string>
     <string name="Login1">Entra</string>
     <string name="Account">Non hai un account? Registrati qui</string>
+    <string name="ErrorData">Errore, dati non corretti!</string>
+    <string name="LoggingMsg">Accesso in corso...</string>
+
 
     //activity_comments
     <string name="Commenti">Commenti :</string>
     <string name="Utenti">Utenti :</string>
     <string name="Valuta">Valuta :</string>
     <string name="AvvisoCommenti">Inserisci commento :</string>
+    <string name="CommentiVuoti">Nessun commento per questa lezione</string>
+    <string name="ErrorCommPost">Errore nell\'invio del commento</string>
 
     //bottom_navigation
     <string name="Home">Pagina iniziale</string>
@@ -29,7 +34,7 @@
     <string name="Logut">Esci dal profilo</string>
 
     //activity_lessons
-    <string name="Lista">Lista delle lezioni(Nome corso)</string>
+    <string name="Lista">"Lista delle lezioni di: "</string>
 
     //activity_rating
     <string name="Submit">Sottoscrivi</string>
@@ -39,6 +44,8 @@
     <string name="CreateLessons">Crea lezione</string>
     <string name="Conferma">Vuoi veramente creare una nuona lezione?</string>
     <string name="QR">Copia il codice per il QR</string>
+    <string name="TestoCopiato">Testo Copiato!</string>
+    <string name="TestoAggiunto">Lezione Aggiunta!</string>
 
     //fragment_favorites
     <string name="ITPS">Lista dei corsi di ITPS</string>
@@ -58,17 +65,16 @@
     <string name="NomeCorso">Nome Corso</string>
 
     //RatingAcitivity
-    <string name="Valutazione">Il tuo voto e\' :</string>
+    <string name="Valutazione">"Il tuo voto è: "</string>
     <string name="Voto">Grazie per aver votato</string>
+    <string name="ErrorRatePost">Errore inserimento voto</string>
 
     //Logging
     <string name="InserisciPassword">Inserisci Password</string>
     <string name="Inserisci">Inserisci Email</string>
     <string name="Logging">Accesso in corso...</string>
 
-    //CommentActivity
-    <string name="Id_lezione">Id lezione </string>
-    <string name="Id_corso">Id corso</string>
+
 
     //LessonRecyclerAdapter
     <string name="Errore">Errore</string>
