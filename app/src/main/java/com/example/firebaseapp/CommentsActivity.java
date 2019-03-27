@@ -221,6 +221,7 @@ public class CommentsActivity extends AppCompatActivity {
                 Intent intentRating= new Intent(getApplicationContext(),RatingActivity.class);
                 intentRating.putExtra("course_id",  course_id);
                 intentRating.putExtra("lesson_id", lesson_id);
+                intentRating.putExtra("Email",userMail);
                 startActivity(intentRating);
             }
         });
