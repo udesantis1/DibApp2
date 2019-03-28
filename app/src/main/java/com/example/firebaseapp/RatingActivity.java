@@ -48,6 +48,7 @@ public class RatingActivity extends AppCompatActivity {
     private RatingBar ratingBar;
     private Button btnSubmit;//Button send rating
     TextView ratingDisplayTextView, averageText; // View number rate
+    private EditText textCommentVote;
     //Firestore
     FirebaseFirestore mFirestore;
     FirebaseAuth firebaseAuth;
@@ -75,6 +76,7 @@ public class RatingActivity extends AppCompatActivity {
         btnSubmit= (Button)findViewById(R.id.btn_send);
         averageText = findViewById(R.id.average_text);
         ratingDisplayTextView= (TextView)findViewById(R.id.textView);
+        textCommentVote=(EditText)findViewById(R.id.editTextCommentVote);
 
         ratingBar.setStepSize(1);
 
@@ -92,8 +94,10 @@ public class RatingActivity extends AppCompatActivity {
                public void onClick(View v) {
 
                    int b = (int) ratingBar.getRating();
-                   Map<String, Integer> ratin = new HashMap<>();
+                   String c= textCommentVote.getText().toString().trim();
+                   Map<String, Object> ratin = new HashMap<>();
                    ratin.put(user.getEmail(), b);
+                   ratin.put(user.getEmail(),c);
 
 
                    mFirestore.collection("Courses/" + course_id + "/Lessons/" + lesson_id + "/Rates").add(ratin).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
@@ -104,6 +108,7 @@ public class RatingActivity extends AppCompatActivity {
                                Toast.makeText(RatingActivity.this, postError, Toast.LENGTH_SHORT).show();
                            } else {
                                ratingBar.setRating(0);
+                               textCommentVote.setText("");
                            }
                        }
                    });
