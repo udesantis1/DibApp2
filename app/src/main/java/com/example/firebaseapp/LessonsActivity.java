@@ -73,7 +73,7 @@ public class LessonsActivity extends AppCompatActivity {
 
                 if(queryDocumentSnapshots.isEmpty())
                 {
-                    Toast.makeText(LessonsActivity.this,R.string.NoLessons, Toast.LENGTH_LONG).show();
+                    Toast.makeText(LessonsActivity.this,R.string.NoLessons, Toast.LENGTH_SHORT).show();
                 }
 
                 for(DocumentChange doc: queryDocumentSnapshots.getDocumentChanges())

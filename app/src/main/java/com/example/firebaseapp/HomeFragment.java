@@ -114,8 +114,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
 
 
-        //cercare se l'utente corrente è un admin o no
-        //mFireStore = FirebaseFirestore.getInstance();
+    
         firebaseFirestore = FirebaseFirestore.getInstance();
 
 

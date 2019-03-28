@@ -147,7 +147,7 @@ public class CommentsActivity extends AppCompatActivity {
                     if (queryDocumentSnapshots.isEmpty()) {
                         commentsList.clear();
                         String emptyComments = CommentsActivity.this.getResources().getString(R.string.CommentiVuoti);
-                        Toast.makeText(CommentsActivity.this, emptyComments, Toast.LENGTH_LONG).show();
+                        Toast.makeText(CommentsActivity.this, emptyComments, Toast.LENGTH_SHORT).show();
                     }
 
                     for (DocumentChange doc : queryDocumentSnapshots.getDocumentChanges()) {

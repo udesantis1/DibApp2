@@ -10,10 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -44,15 +47,13 @@ public class FavoritesFragment extends Fragment {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         //SnapshotListener helps to retrieve data in real time
-        firebaseFirestore.collection("Courses").orderBy("courseName").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        firebaseFirestore.collection("Courses").orderBy("courseName").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
-                for(DocumentChange doc: queryDocumentSnapshots.getDocumentChanges())
+                for(DocumentChange doc: task.getResult().getDocumentChanges())
                 {
-                    //check if data is edited
-                    if(doc.getType() == DocumentChange.Type.ADDED){
-
+                    if(doc.getType() == DocumentChange.Type.ADDED) {
                         String courseID = doc.getDocument().getId();
                         Course course = doc.getDocument().toObject(Course.class).withId(courseID);
                         course_list.add(course);

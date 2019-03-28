@@ -13,8 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -24,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
+import java.util.concurrent.Executor;
 
 public class LessonRecyclerAdapter extends RecyclerView.Adapter<LessonRecyclerAdapter.ViewHolder> {
 
@@ -94,15 +97,14 @@ public class LessonRecyclerAdapter extends RecyclerView.Adapter<LessonRecyclerAd
         mFireStore = FirebaseFirestore.getInstance();
 
 
-        mFireStore.collection("AdminUsers")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@javax.annotation.Nullable QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+        mFireStore.collection("AdminUsers").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
                         boolean find = false;
-                        for(DocumentSnapshot doc : documentSnapshots){
+                        for(DocumentSnapshot doc : task.getResult()){
                             String email = doc.getString("email");
-
-
 
                             if(email.equals(admin.getEmail())) {
                                 find = true;
