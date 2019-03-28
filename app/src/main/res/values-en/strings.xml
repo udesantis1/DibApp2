@@ -58,7 +58,7 @@
 
     <string name="Errore">Error</string>
     <string name="Insegnantenonautorizzato">Error, teacher not allowed</string>
-    <string name="LezioneRimossas">Lesson removed</string>
+    <string name="LezioneRimossa">Lesson removed</string>
 
     <string name="ErrorRatePost">Error posting rate</string>
 
@@ -72,6 +72,13 @@
     <string name="TestoCopiato">Text Copied!</string>
 
     <string name="TestoAggiunto">Lesson added!!</string>
+
+    <string name="InserisciEmail1">Enter Email</string>
+    <string name="InserisciPass1">Enter Password</string>
+    <string name="Registrazione1">Registering Please Wait...</string>
+    <string name="RegitrazioneErrore">Registration Error</string>
+
+    <string name="Qr">No scan data received!</string>
 
 
 

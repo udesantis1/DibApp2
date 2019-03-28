@@ -138,7 +138,7 @@ public class LessonRecyclerAdapter extends RecyclerView.Adapter<LessonRecyclerAd
                                                     firebaseFirestore.document("Courses/"+courseId+"/Lessons/"+lessonId).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
-                                                            Toast.makeText(context, "Lesson removed", Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(context, R.string.LezioneRimossa, Toast.LENGTH_SHORT).show();
                                                             //aggiorna pagina
                                                             lessonsList.remove(position);
                                                             notifyDataSetChanged();
@@ -146,10 +146,10 @@ public class LessonRecyclerAdapter extends RecyclerView.Adapter<LessonRecyclerAd
                                                     }).addOnFailureListener(new OnFailureListener() {
                                                         @Override
                                                         public void onFailure(@NonNull Exception e) {
-                                                            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(context, R.string.Errore, Toast.LENGTH_SHORT).show();
                                                         }
                                                     });
-                                                    } else Toast.makeText(context, "Error, teacher not allowed", Toast.LENGTH_SHORT).show();
+                                                    } else Toast.makeText(context, R.string.Insegnantenonautorizzato, Toast.LENGTH_SHORT).show();
                                                 }
                                             }).setNegativeButton(android.R.string.no, null).show();
 
