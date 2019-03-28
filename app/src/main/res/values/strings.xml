@@ -88,7 +88,7 @@
     <string name="RegitrazioneErrore">Errore nella registrazione</string>
 
     //PostQr
-    <string name="Qr">Nessun dato di scansione ricevuto!</string>
+    <string name="Qr">Nessuna scansione ricevuta</string>
 
 
 
