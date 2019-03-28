@@ -85,7 +85,7 @@ public class RatingActivity extends AppCompatActivity {
         course_id = getIntent().getStringExtra("course_id");
         //ratingList = new ArrayList<>();
 
-       final String path = "Courses/" + course_id + "/Lessons/" + lesson_id + "/Rates";
+       //final String path = "Courses/" + course_id + "/Lessons/" + lesson_id + "/Rates";
 
 
                 
@@ -94,10 +94,10 @@ public class RatingActivity extends AppCompatActivity {
                public void onClick(View v) {
 
                    int b = (int) ratingBar.getRating();
-                   String c= textCommentVote.getText().toString().trim();
+                   String commet = textCommentVote.getText().toString().trim();
                    Map<String, Object> ratin = new HashMap<>();
                    ratin.put(user.getEmail(), b);
-                   ratin.put(user.getEmail(),c);
+                   ratin.put(user.getEmail(),commet);
 
 
                    mFirestore.collection("Courses/" + course_id + "/Lessons/" + lesson_id + "/Rates").add(ratin).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
