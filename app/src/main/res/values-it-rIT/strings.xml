@@ -60,7 +60,7 @@
 
     <string name="Errore">Errore</string>
     <string name="Insegnantenonautorizzato">Errore, insegnante non autorizzato</string>
-    <string name="LezioneRimossas">Lezione rimossa</string>
+    <string name="LezioneRimossa">Lezione rimossa</string>
 
     <string name="ErrorRatePost">Errore inserimento voto</string>
 
@@ -74,6 +74,13 @@
     <string name="TestoCopiato">Testo Copiato!</string>
 
     <string name="TestoAggiunto">Lezione Aggiunta!</string>
+
+    <string name="InserisciEmail1">Inserisci Email</string>
+    <string name="InserisciPass1">Inserisci Password</string>
+    <string name="Registrazione1">Registrazione, attendere prego...</string>
+    <string name="RegitrazioneErrore">Errore nella registrazione</string>
+
+    <string name="Qr">Nessun dato di scansione ricevuto!</string>
 
 
 

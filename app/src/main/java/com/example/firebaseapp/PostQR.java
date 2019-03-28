@@ -128,7 +128,7 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
         }
         else{
             Toast toast = Toast.makeText(getApplicationContext(),
-                    "No scan data received!", Toast.LENGTH_SHORT);
+                    R.string.Qr, Toast.LENGTH_SHORT);
             toast.show();
         }
     }

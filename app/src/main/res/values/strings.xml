@@ -16,7 +16,7 @@
     <string name="LoggingMsg">Accesso in corso...</string>
 
 
-    //activity_comments
+    //CommentsActivity
     <string name="Commenti">Commenti :</string>
     <string name="Utenti">Utenti :</string>
     <string name="Valuta">Valuta :</string>
@@ -79,9 +79,16 @@
     //LessonRecyclerAdapter
     <string name="Errore">Errore</string>
     <string name="Insegnantenonautorizzato">Errore, insegnante non autorizzato</string>
-    <string name="LezioneRimossas">Lezione rimossa</string>
+    <string name="LezioneRimossa">Lezione rimossa</string>
 
+    //MainActivity
+    <string name="InserisciEmail1">Inserisci Email</string>
+    <string name="InserisciPass1">Inserisci Password</string>
+    <string name="Registrazione1">Registrazione, attendere prego...</string>
+    <string name="RegitrazioneErrore">Errore nella registrazione</string>
 
+    //PostQr
+    <string name="Qr">Nessun dato di scansione ricevuto!</string>
 
 
 
