@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -35,6 +36,9 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import google.zxing.integration.android.IntentIntegrator;
+import google.zxing.integration.android.IntentResult;
+
 import static android.content.Context.CLIPBOARD_SERVICE;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -45,7 +49,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private Spanned text;
     //view objects
     private TextView textViewUserEmail;
-
 
 
     ClipboardManager clipboardManager;
@@ -64,7 +67,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container,false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
 
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
@@ -82,7 +86,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //saving user info
         admin.setEmail(user.getEmail());
 
-
         buttonQR = (Button) view.findViewById(R.id.buttonScanQR);
 
         buttonCreate = (Button) view.findViewById(R.id.buttonCreateLesson);
@@ -96,8 +99,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         linkQR.setVisibility(View.GONE);
 
 
-
-
         //Link per il QR
         clipboardManager = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE);
         buttonCopy.setOnClickListener(new View.OnClickListener() {
@@ -107,17 +108,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 clipData = ClipData.newPlainText("QR", qr);
                 clipboardManager.setPrimaryClip(clipData);
                 String copyText = HomeFragment.this.getResources().getString(R.string.TestoCopiato);
-                Toast.makeText(getContext(), copyText,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), copyText, Toast.LENGTH_SHORT).show();
             }
         });
 
 
-
-
-    
+        //cercare se l'utente corrente è un admin o no
+        //mFireStore = FirebaseFirestore.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-
-
 
 
         firebaseFirestore.collection("AdminUsers").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -126,23 +124,20 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                 boolean find = false;
 
-                for(QueryDocumentSnapshot doc: task.getResult())
-                {
+                for (QueryDocumentSnapshot doc : task.getResult()) {
                     String email = doc.getString("email");
-                    if(email.equals(admin.getEmail())) {
+                    if (email.equals(admin.getEmail())) {
                         find = true;
                         //getting admin's courseID
                         admin.setCourseId(doc.getString("courseId"));
                         break;
                     }
                 }
-                if(find)
-                {
+                if (find) {
                     buttonCreate.setVisibility(View.VISIBLE);
                 }
             }
         });
-
 
 
         //adding listener to button
@@ -158,18 +153,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
 
-
     @Override
     public void onClick(View view) {
 
-        if(view == buttonQR)
-        {
+        if (view == buttonQR) {
 
             startActivity(new Intent(getContext(), PostQR.class));
+
+
+
+
         }
 
-        if(view == buttonCreate)
-        {
+        if (view == buttonCreate) {
 
             new AlertDialog.Builder(getContext())
                     .setTitle(R.string.CreateLessons)
@@ -179,40 +175,39 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             final Lesson lesson = new Lesson(admin.getCourseId());
                             lesson.addUser(admin.getEmail());
-                            firebaseFirestore.collection("Courses/"+lesson.getCourseID()+"/Lessons").add(lesson).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                            firebaseFirestore.collection("Courses/" + lesson.getCourseID() + "/Lessons").add(lesson).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentReference> task) {
-                                    if(task.isSuccessful())
-                                    {
+                                    if (task.isSuccessful()) {
                                         String addText = HomeFragment.this.getResources().getString(R.string.TestoAggiunto);
                                         Toast.makeText(getContext(), addText, Toast.LENGTH_SHORT).show();
 
                                         //Firestore per ottenere id corso e lezione per il qr
                                         mFireStore = FirebaseFirestore.getInstance();
-                                        mFireStore.collection("Courses/"+lesson.getCourseID()+"/Lessons").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                        mFireStore.collection("Courses/" + lesson.getCourseID() + "/Lessons").addSnapshotListener(new EventListener<QuerySnapshot>() {
                                             @Override
                                             public void onEvent(@javax.annotation.Nullable QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
 
-                                                if(e != null){
-                                                    Log.d(TAG, "error : "+ e.getMessage());
+                                                if (e != null) {
+                                                    Log.d(TAG, "error : " + e.getMessage());
                                                 }
 
                                                 String lessonId = null;
                                                 boolean isSubject = false;
 
-                                                for(DocumentSnapshot doc : documentSnapshots){
+                                                for (DocumentSnapshot doc : documentSnapshots) {
                                                     String lessonName = doc.getString("lesson_name");
                                                     lessonId = doc.getId();
 
 
-                                                    if(lessonName.equals(lesson.getLesson_name())) {
+                                                    if (lessonName.equals(lesson.getLesson_name())) {
 
                                                         isSubject = true;
                                                         break;
                                                     }
 
                                                 }
-                                                if(isSubject){
+                                                if (isSubject) {
 
                                                     qrID_txt.setText(lessonId + lesson.getCourseID());
                                                     qrID_txt.setVisibility(View.VISIBLE);
@@ -226,8 +221,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                                     }
                                 }
                             });
-                        }})
+                        }
+                    })
                     .setNegativeButton(android.R.string.no, null).show();
         }
     }
+
 }

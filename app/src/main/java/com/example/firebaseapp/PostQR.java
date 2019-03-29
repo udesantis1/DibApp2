@@ -60,6 +60,8 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
         FirebaseUser user = firebaseAuth.getCurrentUser();
         userMail = user.getEmail();
 
+        IntentIntegrator scanIntegrator = new IntentIntegrator(this);
+        scanIntegrator.initiateScan();
 
     }
 
@@ -71,10 +73,12 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
     }
 
 
+
     public void onClick(View v){
         if(v.getId()==R.id.scan_button){
             IntentIntegrator scanIntegrator = new IntentIntegrator(this);
             scanIntegrator.initiateScan();
+
         }
     }
 
@@ -122,7 +126,7 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
                        startActivity(intentQR);
 
 
-                    }else contentTxt.setText("Lesson non found ");
+                    }else contentTxt.setText("Lesson not found ");
                 }
             });
         }
