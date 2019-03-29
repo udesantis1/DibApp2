@@ -61,7 +61,7 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
         userMail = user.getEmail();
 
         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
-        scanIntegrator.initiateScan();
+        scanIntegrator.initiateScan(); 
 
     }
 
