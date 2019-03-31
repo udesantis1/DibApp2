@@ -61,7 +61,7 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
         userMail = user.getEmail();
 
         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
-        scanIntegrator.initiateScan(); 
+        scanIntegrator.initiateScan();
 
     }
 
@@ -95,7 +95,7 @@ public class PostQR extends AppCompatActivity implements View.OnClickListener{
 
             //Firestore
             mFireStore = FirebaseFirestore.getInstance();
-                                   mFireStore.collection("Courses/"+course+"/Lessons").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                   mFireStore.collection("Courses/"+course+"/Lessons").addSnapshotListener(PostQR.this, new EventListener<QuerySnapshot>() {
                             @Override
                             public void onEvent(@Nullable QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
 
